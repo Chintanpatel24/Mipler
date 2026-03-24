@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSINT Investigation Workspace</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader-content">
+            <div class="loader-icon">🔍</div>
+            <div class="loader-text">OSINT Workspace</div>
+            <div class="loader-bar"><div class="loader-fill"></div></div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="app" class="hidden">
+        <!-- Top Bar -->
+        <header id="topbar">
+            <div class="topbar-left">
+                <span class="logo">🔍</span>
+                <span class="app-title">OSINT Workspace</span>
+                <span class="separator">|</span>
+                <span id="workspace-name" class="workspace-name" contenteditable="true">Untitled Investigation</span>
+                <span id="save-status" class="save-status">● Saved</span>
+            </div>
+            <div class="topbar-center">
+                <div class="toolbar-group">
+                    <button class="tb-btn" id="btn-select" title="Select (V)" data-tool="select">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/></svg>
+                    </button>
+                    <button class="tb-btn" id="btn-pan" title="Pan (Space+Drag)" data-tool="pan">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+                    </button>
+                    <button class="tb-btn" id="btn-connect" title="Connect Nodes (C)" data-tool="connect">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
+                </div>
+                <div class="toolbar-group">
+                    <button class="tb-btn" id="btn-add-note" title="Add Note (N)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </button>
+                    <button class="tb-btn" id="btn-add-label" title="Add Label (L)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+                    </button>
+                    <button class="tb-btn" id="btn-add-group" title="Add Group (G)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke-dasharray="4"/></svg>
+                    </button>
+                </div>
+                <div class="toolbar-group">
+                    <button class="tb-btn" id="btn-undo" title="Undo (Ctrl+Z)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 105.42-8.37L1 10"/></svg>
+                    </button>
+                    <button class="tb-btn" id="btn-redo" title="Redo (Ctrl+Y)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-5.42-8.37L23 10"/></svg>
+                    </button>
+                </div>
+                <div class="toolbar-group">
+                    <button class="tb-btn" id="btn-zoom-in" title="Zoom In">+</button>
+                    <span id="zoom-level" class="zoom-level">100%</span>
+                    <button class="tb-btn" id="btn-zoom-out" title="Zoom Out">−</button>
+                    <button class="tb-btn" id="btn-zoom-fit" title="Fit All">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <button class="tb-btn" id="btn-search" title="Search (Ctrl+F)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </button>
+                <button class="tb-btn" id="btn-export" title="Export">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </button>
+                <button class="tb-btn" id="btn-settings" title="Settings">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                </button>
+                <button class="tb-btn" id="btn-workspaces" title="Workspaces">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Sidebar - Tools Panel -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>Tools</h3>
+                <input type="text" id="tool-search" placeholder="Search tools..." class="sidebar-search">
+            </div>
+            <div id="tool-list" class="tool-list">
+                <!-- Populated by JS -->
+            </div>
+            <div class="sidebar-section">
+                <h4 class="section-title" data-toggle="entity-types">Entity Types</h4>
+                <div id="entity-types" class="entity-list">
+                    <div class="entity-item" draggable="true" data-type="person">
+                        <span class="entity-icon">👤</span> Person
+                    </div>
+                    <div class="entity-item" draggable="true" data-type="organization">
+                        <span class="entity-icon">🏢</span> Organization
+                    </div>
+                    <div class="entity-item" draggable="true" data-type="domain">
+                        <span class="entity-icon">🌐</span> Domain
+                    </div>
+                    <div class="entity-item" draggable="true" data-type="ip">
+                        <span class="entity-icon">📡</span> IP Address
+                    </div>
+                    <div class="entity-item" draggable="true" data-type="email">
+                        <span class="entity-icon">📧</span> Email
+                    </div>
+                    <div class="entity-item" draggable="true" data-type="phone">
+                        <span class="entity-icon">📱</span> Phone
+                    </div>
+                    <div class="entity-item" draggable="true" data-type="location">
+                        <span class="entity-icon">📍</span> Location
+                    </div>
+                    <div class="entity-item" draggable="true" data-type="social">
+                        <span class="entity-icon">💬</span> Social Account
+                    </div>
+                    <div class="entity-item" draggable="true" data-type="document">
+                        <span class="entity-icon">📄</span> Document
+                    </div>
+                    <div class="entity-item" draggable="true" data-type="image">
+                        <span class="entity-icon">🖼️</span> Image
+                    </div>
+                    <div class="entity-item" draggable="true" data-type="cryptocurrency">
+                        <span class="entity-icon">₿</span> Crypto Address
+                    </div>
+                    <div class="entity-item" draggable="true" data-type="hash">
+                        <span class="entity-icon">#️⃣</span> Hash
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-section">
+                <h4 class="section-title" data-toggle="osint-links">OSINT Resources</h4>
+                <div id="osint-links" class="osint-links">
+                    <a href="https://osintframework.com/" target="_blank" class="osint-link">OSINT Framework</a>
+                    <a href="https://start.me/p/DPYPMz/the-ultimate-osint-collection" target="_blank" class="osint-link">Ultimate OSINT Collection</a>
+                    <a href="https://inteltechniques.com/tools/" target="_blank" class="osint-link">IntelTechniques</a>
+                    <a href="https://www.maltego.com/" target="_blank" class="osint-link">Maltego</a>
+                    <a href="https://haveibeenpwned.com/" target="_blank" class="osint-link">Have I Been Pwned</a>
+                    <a href="https://censys.io/" target="_blank" class="osint-link">Censys</a>
+                    <a href="https://archive.org/" target="_blank" class="osint-link">Wayback Machine</a>
+                    <a href="https://hunter.io/" target="_blank" class="osint-link">Hunter.io</a>
+                    <a href="https://www.virustotal.com/" target="_blank" class="osint-link">VirusTotal</a>
+                    <a href="https://who.is/" target="_blank" class="osint-link">Who.is</a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Canvas Area -->
+        <main id="canvas-container">
+            <div id="canvas" class="canvas">
+                <svg id="connections-svg" class="connections-layer"></svg>
+                <div id="nodes-layer" class="nodes-layer"></div>
+                <div id="grid-layer" class="grid-layer"></div>
+            </div>
+            <!-- Minimap -->
+            <div id="minimap" class="minimap">
+                <canvas id="minimap-canvas" width="200" height="150"></canvas>
+                <div id="minimap-viewport" class="minimap-viewport"></div>
+            </div>
+            <!-- Selection Box -->
+            <div id="selection-box" class="selection-box hidden"></div>
+        </main>
+
+        <!-- Right Panel - Node Inspector -->
+        <aside id="inspector" class="inspector hidden">
+            <div class="inspector-header">
+                <h3 id="inspector-title">Node Inspector</h3>
+                <button id="inspector-close" class="tb-btn">✕</button>
+            </div>
+            <div id="inspector-content" class="inspector-content">
+                <!-- Populated by JS -->
+            </div>
+        </aside>
+
+        <!-- Context Menu -->
+        <div id="context-menu" class="context-menu hidden">
+            <div class="context-menu-item" data-action="add-note">📝 Add Note</div>
+            <div class="context-menu-item" data-action="add-entity">🎯 Add Entity</div>
+            <div class="context-menu-item" data-action="add-tool">🔧 Add Tool Node</div>
+            <div class="context-menu-divider"></div>
+            <div class="context-menu-item" data-action="paste">📋 Paste</div>
+            <div class="context-menu-item" data-action="select-all">⬜ Select All</div>
+            <div class="context-menu-divider"></div>
+            <div class="context-menu-item" data-action="zoom-fit">🔍 Fit to Screen</div>
+            <div class="context-menu-item" data-action="zoom-reset">🔄 Reset Zoom</div>
+        </div>
+
+        <!-- Node Context Menu -->
+        <div id="node-context-menu" class="context-menu hidden">
+            <div class="context-menu-item" data-action="run">▶️ Run Tool</div>
+            <div class="context-menu-item" data-action="edit">✏️ Edit</div>
+            <div class="context-menu-item" data-action="duplicate">📋 Duplicate</div>
+            <div class="context-menu-item" data-action="copy">📎 Copy</div>
+            <div class="context-menu-divider"></div>
+            <div class="context-menu-item" data-action="connect-from">🔗 Connect From</div>
+            <div class="context-menu-item" data-action="connect-to">🔗 Connect To</div>
+            <div class="context-menu-divider"></div>
+            <div class="context-menu-item" data-action="change-color">🎨 Change Color</div>
+            <div class="context-menu-item delete" data-action="delete">🗑️ Delete</div>
+        </div>
+
+        <!-- Modal Overlay -->
+        <div id="modal-overlay" class="modal-overlay hidden">
+            <div id="modal" class="modal">
+                <div class="modal-header">
+                    <h3 id="modal-title">Modal</h3>
+                    <button id="modal-close" class="tb-btn">✕</button>
+                </div>
+                <div id="modal-body" class="modal-body"></div>
+                <div id="modal-footer" class="modal-footer"></div>
+            </div>
+        </div>
+
+        <!-- Search Overlay -->
+        <div id="search-overlay" class="search-overlay hidden">
+            <div class="search-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="search-input" placeholder="Search nodes, notes, connections...">
+                <kbd>ESC</kbd>
+            </div>
+            <div id="search-results" class="search-results"></div>
+        </div>
+
+        <!-- Notification Container -->
+        <div id="notifications" class="notifications"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/static/js/utils.js"></script>
+    <script src="/static/js/canvas.js"></script>
+    <script src="/static/js/node.js"></script>
+    <script src="/static/js/connection.js"></script>
+    <script src="/static/js/sidebar.js"></script>
+    <script src="/static/js/toolbar.js"></script>
+    <script src="/static/js/minimap.js"></script>
+    <script src="/static/js/context_menu.js"></script>
+    <script src="/static/js/modal.js"></script>
+    <script src="/static/js/workspace.js"></script>
+    <script src="/static/js/export.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
