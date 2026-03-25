@@ -35,8 +35,8 @@ A powerful, open-source desktop application for OSINT (Open Source Intelligence)
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/mipler.git
-   cd mipler
+   git clone https://github.com/Chintanpatel24/Mipler.git
+   cd Mipler
    ```
 
 2. **Install dependencies**
