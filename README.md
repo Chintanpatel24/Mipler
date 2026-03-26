@@ -1,12 +1,14 @@
 <div align=center>
 <img src=image/mipler.png>
+
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  [![TypeScript](https://img.shields.io/badge/TypeScript-✓-3178C6?logo=typescript)](https://www.typescriptlang.org/)  [![React](https://img.shields.io/badge/React-18.2.0-61DAFB?logo=react)](https://reactjs.org/)
+
 </div>
 
 ---
 
-# Mipler — Investigation Wall
-
-A clean, n8n/Notion-inspired OSINT investigation canvas.
+># Mipler — Investigation Wall
 
 ## Features
 
