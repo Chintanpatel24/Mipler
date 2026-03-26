@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useEffect, useRef } from 'react';
 import ReactFlow, {
   Background, Controls, MiniMap, BackgroundVariant,
   type NodeTypes, type EdgeTypes, useReactFlow, ReactFlowProvider,
-  type OnConnectStartParams,
+  type OnConnectStartParams, ConnectionMode,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { useWorkspaceStore } from '../store/useWorkspaceStore';
@@ -12,7 +12,7 @@ import { ApiWorkspace } from './ApiWorkspace';
 import { AiPanel } from './AiPanel';
 import type { CardType } from '../types';
 
-const SNAP_RADIUS = 80; // px in screen space — how far a handle attracts
+const SNAP_RADIUS = 100; // Increased for easier connections
 
 const Inner: React.FC = () => {
   const {
@@ -133,6 +133,7 @@ const Inner: React.FC = () => {
           deleteKeyCode={['Backspace', 'Delete']}
           connectionLineStyle={{ stroke: '#888', strokeWidth: 1.5, strokeDasharray: '5 3' }}
           connectionRadius={SNAP_RADIUS}
+          connectionMode={ConnectionMode.Loose}
           minZoom={0.05}
           maxZoom={5}
           proOptions={{ hideAttribution: true }}
