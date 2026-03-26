@@ -31,6 +31,11 @@ export const BaseCard: React.FC<BaseCardProps> = ({
   const headerBg = isLight ? '#f9f9f7' : '#1a1a1a';
   const bodyBg = cardColor;
 
+  // Clean handle style - no glow, n8n-like
+  const handleStyle = {
+    boxShadow: 'none',
+  };
+
   return (
     <div
       className="mipler-card-wrapper"
@@ -45,57 +50,60 @@ export const BaseCard: React.FC<BaseCardProps> = ({
         userSelect: 'none',
       }}
     >
-      {/* Top-center connection handle — outside the card, easy to grab */}
+      {/* Top handles */}
       <Handle
         type="source"
         position={Position.Top}
         id="top-source"
-        style={{ top: -8, left: '50%', transform: 'translateX(-50%)', zIndex: 30 }}
+        style={{ ...handleStyle, top: -7, left: '40%', transform: 'translateX(-50%)', zIndex: 30 }}
       />
       <Handle
         type="target"
         position={Position.Top}
         id="top-target"
-        style={{ top: -8, left: '50%', transform: 'translateX(-50%)', zIndex: 30 }}
+        style={{ ...handleStyle, top: -7, left: '60%', transform: 'translateX(-50%)', zIndex: 30 }}
       />
-      {/* Bottom handle */}
+      
+      {/* Bottom handles */}
       <Handle
         type="source"
         position={Position.Bottom}
         id="bottom-source"
-        style={{ bottom: -8, left: '50%', transform: 'translateX(-50%)', zIndex: 30 }}
+        style={{ ...handleStyle, bottom: -7, left: '40%', transform: 'translateX(-50%)', zIndex: 30 }}
       />
       <Handle
         type="target"
         position={Position.Bottom}
         id="bottom-target"
-        style={{ bottom: -8, left: '50%', transform: 'translateX(-50%)', zIndex: 30 }}
+        style={{ ...handleStyle, bottom: -7, left: '60%', transform: 'translateX(-50%)', zIndex: 30 }}
       />
-      {/* Left handle */}
+      
+      {/* Left handles */}
       <Handle
         type="source"
         position={Position.Left}
         id="left-source"
-        style={{ left: -8, top: '50%', transform: 'translateY(-50%)', zIndex: 30 }}
+        style={{ ...handleStyle, left: -7, top: '40%', transform: 'translateY(-50%)', zIndex: 30 }}
       />
       <Handle
         type="target"
         position={Position.Left}
         id="left-target"
-        style={{ left: -8, top: '50%', transform: 'translateY(-50%)', zIndex: 30 }}
+        style={{ ...handleStyle, left: -7, top: '60%', transform: 'translateY(-50%)', zIndex: 30 }}
       />
-      {/* Right handle */}
+      
+      {/* Right handles */}
       <Handle
         type="source"
         position={Position.Right}
         id="right-source"
-        style={{ right: -8, top: '50%', transform: 'translateY(-50%)', zIndex: 30 }}
+        style={{ ...handleStyle, right: -7, top: '40%', transform: 'translateY(-50%)', zIndex: 30 }}
       />
       <Handle
         type="target"
         position={Position.Right}
         id="right-target"
-        style={{ right: -8, top: '50%', transform: 'translateY(-50%)', zIndex: 30 }}
+        style={{ ...handleStyle, right: -7, top: '60%', transform: 'translateY(-50%)', zIndex: 30 }}
       />
 
       {/* Header */}
