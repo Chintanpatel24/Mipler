@@ -26,39 +26,50 @@
 /* Connection line while dragging */
 .react-flow__connection-line { stroke: #888 !important; stroke-width: 1.5 !important; stroke-dasharray: 5 3; }
 
-/* ── Handles: clean dots, no hover effects, no glow ── */
+/* ── Handles: base styles ── */
 .react-flow__handle {
-  width: 12px !important;
-  height: 12px !important;
+  opacity: 1 !important;
+  pointer-events: all !important;
+  cursor: crosshair !important;
+}
+
+/* Source handles - visible dots */
+.react-flow__handle[data-handlepos="top"][data-handleid*="source"],
+.react-flow__handle[data-handlepos="bottom"][data-handleid*="source"],
+.react-flow__handle[data-handlepos="left"][data-handleid*="source"],
+.react-flow__handle[data-handlepos="right"][data-handleid*="source"] {
+  width: 14px !important;
+  height: 14px !important;
   background: #3a3a3a !important;
   border: 2px solid #555 !important;
   border-radius: 50% !important;
-  opacity: 1 !important;
-  z-index: 30 !important;
-  cursor: crosshair !important;
-  box-shadow: none !important;
-  pointer-events: all !important;
-}
-
-/* Remove ALL hover effects - keep same appearance */
-.react-flow__handle:hover,
-.react-flow__handle:active,
-.react-flow__handle:focus,
-.react-flow__handle.connecting,
-.react-flow__handle-connecting,
-.react-flow__handle-valid,
-.react-flow__handle-invalid {
-  background: #3a3a3a !important;
-  border: 2px solid #555 !important;
   box-shadow: none !important;
 }
 
-/* Remove node-level connection effects */
-.react-flow__node.handle-attract .react-flow__handle,
-.react-flow__node.is-connecting-target .react-flow__handle,
-.react-flow__node.selected .react-flow__handle {
-  background: #3a3a3a !important;
-  border: 2px solid #555 !important;
+/* Target handles - larger invisible hit area */
+.react-flow__handle[data-handlepos="top"][data-handleid*="target"],
+.react-flow__handle[data-handlepos="bottom"][data-handleid*="target"],
+.react-flow__handle[data-handlepos="left"][data-handleid*="target"],
+.react-flow__handle[data-handlepos="right"][data-handleid*="target"] {
+  width: 28px !important;
+  height: 28px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Subtle hover effect on source handles only - no glow */
+.react-flow__handle[data-handleid*="source"]:hover {
+  background: #4a4a4a !important;
+  border-color: #666 !important;
+  box-shadow: none !important;
+}
+
+/* When connecting - highlight valid targets subtly */
+.react-flow__handle.connectingto,
+.react-flow__handle.valid {
+  background: #4a4a4a !important;
+  border-color: #777 !important;
   box-shadow: none !important;
 }
 
