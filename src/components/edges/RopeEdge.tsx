@@ -28,9 +28,8 @@ export const RopeEdge: React.FC<EdgeProps<EdgeData>> = ({
     <>
       {/* Fat invisible hit area */}
       <path d={edgePath} fill="none" stroke="transparent" strokeWidth={20} style={{ cursor: 'pointer' }} onDoubleClick={open} />
-      {/* Subtle glow */}
-      <path d={edgePath} fill="none" stroke={`${color}18`} strokeWidth={strokeWidth + 4} strokeLinecap="round" />
-      {/* Main edge */}
+      
+      {/* Main edge - no glow layer */}
       <path
         id={id}
         className="react-flow__edge-path"
@@ -44,9 +43,11 @@ export const RopeEdge: React.FC<EdgeProps<EdgeData>> = ({
         style={{ ...style, cursor: 'pointer' }}
         onDoubleClick={open}
       />
-      {/* Endpoint dots */}
-      <circle cx={sourceX} cy={sourceY} r={3} fill={color} stroke="#111" strokeWidth={1} />
-      <circle cx={targetX} cy={targetY} r={3} fill={color} stroke="#111" strokeWidth={1} />
+      
+      {/* Endpoint dots - clean, no glow */}
+      <circle cx={sourceX} cy={sourceY} r={4} fill={color} stroke="#1a1a1a" strokeWidth={1.5} />
+      <circle cx={targetX} cy={targetY} r={4} fill={color} stroke="#1a1a1a" strokeWidth={1.5} />
+      
       {/* Edit button on hover */}
       <EdgeLabelRenderer>
         <div
