@@ -3,6 +3,8 @@ import type { Node, Edge } from 'reactflow';
 export type CardType =
   | 'note'
   | 'image'
+  | 'gif'
+  | 'video'
   | 'pdf'
   | 'whois'
   | 'dns'
@@ -18,6 +20,8 @@ export interface CardData {
   content: string;
   url?: string;
   imageData?: string;
+  gifData?: string;
+  videoData?: string;
   pdfData?: string;
   fileName?: string;
   width?: number;
@@ -51,6 +55,8 @@ export interface WorkspaceState {
   activeInvestigationId: string;
   aiApiKey?: string;
   aiProvider?: string;
+  llmBaseUrl?: string;
+  llmModel?: string;
   aiChatHistory?: AiMessage[];
   showDots: boolean;
   createdAt: string;
