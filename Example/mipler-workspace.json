@@ -1,0 +1,435 @@
+{
+  "id": "8bd290b5-b286-4577-bfc7-5ebc4cf75f03",
+  "name": "Mipler Export",
+  "investigations": [
+    {
+      "id": "ccc2eefb-1dab-4cf9-9410-1c22e40d5bbf",
+      "name": "mipler testing",
+      "nodes": [
+        {
+          "id": "card-40a38345-5b3b-439f-a16a-962605d2ff85",
+          "type": "miplerCard",
+          "position": {
+            "x": 304,
+            "y": 320
+          },
+          "data": {
+            "cardType": "image",
+            "title": "Image",
+            "content": "",
+            "width": 320,
+            "cardColor": "#1e1e1e",
+            "createdAt": "2026-03-26T10:00:06.096Z",
+            "updatedAt": "2026-03-26T10:00:06.096Z"
+          },
+          "width": 320,
+          "height": 183,
+          "selected": false,
+          "positionAbsolute": {
+            "x": 304,
+            "y": 320
+          },
+          "dragging": false
+        },
+        {
+          "id": "card-29bddcd3-a148-49e5-bd54-9732d0985fac",
+          "type": "miplerCard",
+          "position": {
+            "x": -176,
+            "y": 400
+          },
+          "data": {
+            "cardType": "image",
+            "title": "Image",
+            "content": "",
+            "width": 320,
+            "cardColor": "#1e1e1e",
+            "createdAt": "2026-03-26T10:00:06.256Z",
+            "updatedAt": "2026-03-26T10:00:06.256Z"
+          },
+          "width": 320,
+          "height": 183,
+          "selected": false,
+          "positionAbsolute": {
+            "x": -176,
+            "y": 400
+          },
+          "dragging": false
+        },
+        {
+          "id": "card-2c1f7c5f-268a-4273-8225-460b10f83130",
+          "type": "miplerCard",
+          "position": {
+            "x": -720,
+            "y": 384
+          },
+          "data": {
+            "cardType": "image",
+            "title": "Image",
+            "content": "",
+            "width": 320,
+            "cardColor": "#1e1e1e",
+            "createdAt": "2026-03-26T10:01:05.257Z",
+            "updatedAt": "2026-03-26T10:01:05.257Z"
+          },
+          "width": 320,
+          "height": 183,
+          "selected": false,
+          "positionAbsolute": {
+            "x": -720,
+            "y": 384
+          },
+          "dragging": false
+        },
+        {
+          "id": "card-e489062f-8054-40b8-b436-893963911e89",
+          "type": "miplerCard",
+          "position": {
+            "x": 256,
+            "y": 816
+          },
+          "data": {
+            "cardType": "dns",
+            "title": "DNS Lookup",
+            "content": "",
+            "width": 360,
+            "cardColor": "#531818",
+            "createdAt": "2026-03-26T10:03:23.356Z",
+            "updatedAt": "2026-03-26T10:03:23.356Z"
+          },
+          "width": 360,
+          "height": 92,
+          "selected": true,
+          "positionAbsolute": {
+            "x": 256,
+            "y": 816
+          },
+          "dragging": false
+        },
+        {
+          "id": "card-32914d89-6605-4604-9dad-b8f2df51c098",
+          "type": "miplerCard",
+          "position": {
+            "x": -528,
+            "y": 1104
+          },
+          "data": {
+            "cardType": "reverse-image",
+            "title": "Reverse Image Search",
+            "content": "",
+            "width": 440,
+            "cardColor": "#134210",
+            "createdAt": "2026-03-26T10:04:29.893Z",
+            "updatedAt": "2026-03-26T10:04:29.893Z"
+          },
+          "width": 440,
+          "height": 346,
+          "selected": false,
+          "positionAbsolute": {
+            "x": -528,
+            "y": 1104
+          },
+          "dragging": false
+        },
+        {
+          "id": "card-e1112c63-cb65-4f45-a695-70fa7dd4b4fe",
+          "type": "miplerCard",
+          "position": {
+            "x": 224,
+            "y": 1024
+          },
+          "data": {
+            "cardType": "pdf",
+            "title": "Document",
+            "content": "",
+            "width": 360,
+            "cardColor": "#1e1e1e",
+            "createdAt": "2026-03-26T10:05:41.934Z",
+            "updatedAt": "2026-03-26T10:05:41.934Z"
+          },
+          "width": 360,
+          "height": 138,
+          "selected": false,
+          "positionAbsolute": {
+            "x": 224,
+            "y": 1024
+          },
+          "dragging": false
+        },
+        {
+          "id": "card-9e955af2-6890-47a3-9a27-fd776f4f6d0d",
+          "type": "miplerCard",
+          "position": {
+            "x": -1056,
+            "y": 672
+          },
+          "data": {
+            "cardType": "osint-framework",
+            "title": "OSINT Framework",
+            "content": "",
+            "width": 440,
+            "cardColor": "#1e1e1e",
+            "createdAt": "2026-03-26T10:05:45.965Z",
+            "updatedAt": "2026-03-26T10:05:45.965Z"
+          },
+          "width": 440,
+          "height": 356,
+          "selected": false,
+          "positionAbsolute": {
+            "x": -1056,
+            "y": 672
+          },
+          "dragging": false
+        },
+        {
+          "id": "card-6803ca25-0d3b-4907-b348-e1c405322086",
+          "type": "miplerCard",
+          "position": {
+            "x": -304,
+            "y": 768
+          },
+          "data": {
+            "cardType": "whois",
+            "title": "WHOIS Lookup",
+            "content": "",
+            "width": 360,
+            "cardColor": "#1e1e1e",
+            "createdAt": "2026-03-26T10:09:57.523Z",
+            "updatedAt": "2026-03-26T10:09:57.523Z"
+          },
+          "width": 360,
+          "height": 92,
+          "selected": false,
+          "positionAbsolute": {
+            "x": -304,
+            "y": 768
+          },
+          "dragging": false
+        }
+      ],
+      "edges": [
+        {
+          "type": "rope",
+          "animated": false,
+          "source": "card-40a38345-5b3b-439f-a16a-962605d2ff85",
+          "sourceHandle": "left-source",
+          "target": "card-29bddcd3-a148-49e5-bd54-9732d0985fac",
+          "targetHandle": "right-target",
+          "id": "edge-ac905310-1ca8-4c4a-ba0b-45bd534ce0e6",
+          "data": {
+            "color": "#f97316",
+            "lineStyle": "dotted",
+            "strokeWidth": 4
+          },
+          "style": {
+            "stroke": "#f97316",
+            "strokeWidth": 4,
+            "strokeDasharray": "2 4"
+          }
+        },
+        {
+          "type": "rope",
+          "animated": false,
+          "source": "card-29bddcd3-a148-49e5-bd54-9732d0985fac",
+          "sourceHandle": "left-source",
+          "target": "card-2c1f7c5f-268a-4273-8225-460b10f83130",
+          "targetHandle": "right-target",
+          "id": "edge-f8ffdc60-be31-463d-852d-27aa3c4ad96f",
+          "data": {
+            "color": "#f97316",
+            "lineStyle": "solid",
+            "strokeWidth": 4
+          },
+          "style": {
+            "stroke": "#f97316",
+            "strokeWidth": 4,
+            "strokeDasharray": "0"
+          }
+        },
+        {
+          "type": "rope",
+          "animated": false,
+          "source": "card-29bddcd3-a148-49e5-bd54-9732d0985fac",
+          "sourceHandle": "top-source",
+          "target": "card-40a38345-5b3b-439f-a16a-962605d2ff85",
+          "targetHandle": "top-target",
+          "id": "edge-501e5d06-4840-40f9-93c2-7d19d5b4aef9",
+          "data": {
+            "color": "#f97316",
+            "lineStyle": "solid",
+            "strokeWidth": 4
+          },
+          "style": {
+            "stroke": "#f97316",
+            "strokeWidth": 4,
+            "strokeDasharray": "0"
+          }
+        },
+        {
+          "type": "rope",
+          "animated": false,
+          "source": "card-40a38345-5b3b-439f-a16a-962605d2ff85",
+          "sourceHandle": "bottom-source",
+          "target": "card-40a38345-5b3b-439f-a16a-962605d2ff85",
+          "targetHandle": "right-target",
+          "id": "edge-4c778fe9-62a3-4f03-a579-5c0aeadf6824",
+          "data": {
+            "color": "#f97316",
+            "lineStyle": "solid",
+            "strokeWidth": 4
+          },
+          "style": {
+            "stroke": "#f97316",
+            "strokeWidth": 4,
+            "strokeDasharray": "0"
+          }
+        },
+        {
+          "type": "rope",
+          "animated": false,
+          "source": "card-e489062f-8054-40b8-b436-893963911e89",
+          "sourceHandle": "top-source",
+          "target": "card-29bddcd3-a148-49e5-bd54-9732d0985fac",
+          "targetHandle": "right-target",
+          "id": "edge-f1051c74-3354-44d4-b3d9-cc9e8ca326d5",
+          "data": {
+            "color": "#e0e0e0",
+            "lineStyle": "solid",
+            "strokeWidth": 4
+          },
+          "style": {
+            "stroke": "#e0e0e0",
+            "strokeWidth": 4,
+            "strokeDasharray": "0"
+          }
+        },
+        {
+          "type": "rope",
+          "animated": false,
+          "source": "card-32914d89-6605-4604-9dad-b8f2df51c098",
+          "sourceHandle": "right-source",
+          "target": "card-e489062f-8054-40b8-b436-893963911e89",
+          "targetHandle": "left-target",
+          "id": "edge-cd268f08-2619-44d7-9e14-9f3591734849",
+          "data": {
+            "color": "#3b82f6",
+            "lineStyle": "solid",
+            "strokeWidth": 3
+          },
+          "style": {
+            "stroke": "#3b82f6",
+            "strokeWidth": 3,
+            "strokeDasharray": "0"
+          }
+        },
+        {
+          "type": "rope",
+          "animated": false,
+          "source": "card-e489062f-8054-40b8-b436-893963911e89",
+          "sourceHandle": "bottom-source",
+          "target": "card-e1112c63-cb65-4f45-a695-70fa7dd4b4fe",
+          "targetHandle": "top-target",
+          "id": "edge-a105c6cf-5c62-44af-9fad-79f52b1ce8d9",
+          "data": {
+            "color": "#ef4444",
+            "lineStyle": "solid",
+            "strokeWidth": 3
+          },
+          "style": {
+            "stroke": "#ef4444",
+            "strokeWidth": 3,
+            "strokeDasharray": "0"
+          }
+        },
+        {
+          "type": "rope",
+          "animated": false,
+          "source": "card-32914d89-6605-4604-9dad-b8f2df51c098",
+          "sourceHandle": "top-source",
+          "target": "card-9e955af2-6890-47a3-9a27-fd776f4f6d0d",
+          "targetHandle": "right-target",
+          "id": "edge-8f876188-a1f7-4bf4-b641-90492297b4a8",
+          "data": {
+            "color": "#eab308",
+            "lineStyle": "solid",
+            "strokeWidth": 3
+          },
+          "style": {
+            "stroke": "#eab308",
+            "strokeWidth": 3,
+            "strokeDasharray": "0"
+          }
+        },
+        {
+          "type": "rope",
+          "animated": false,
+          "source": "card-2c1f7c5f-268a-4273-8225-460b10f83130",
+          "sourceHandle": "bottom-source",
+          "target": "card-9e955af2-6890-47a3-9a27-fd776f4f6d0d",
+          "targetHandle": "top-target",
+          "id": "edge-d3847573-09b0-4899-a7e8-705cded17fd9",
+          "data": {
+            "color": "#e0e0e0",
+            "lineStyle": "solid",
+            "strokeWidth": 3
+          },
+          "style": {
+            "stroke": "#e0e0e0",
+            "strokeWidth": 3,
+            "strokeDasharray": "0"
+          }
+        },
+        {
+          "type": "rope",
+          "animated": false,
+          "source": "card-e1112c63-cb65-4f45-a695-70fa7dd4b4fe",
+          "sourceHandle": "left-source",
+          "target": "card-6803ca25-0d3b-4907-b348-e1c405322086",
+          "targetHandle": "bottom-target",
+          "id": "edge-c2f28944-5711-443e-8a62-6d7d28bfd556",
+          "data": {
+            "color": "#22c55e",
+            "lineStyle": "dashed",
+            "strokeWidth": 1
+          },
+          "style": {
+            "stroke": "#22c55e",
+            "strokeWidth": 1,
+            "strokeDasharray": "8 4"
+          }
+        },
+        {
+          "type": "rope",
+          "animated": false,
+          "source": "card-e489062f-8054-40b8-b436-893963911e89",
+          "sourceHandle": "top-source",
+          "target": "card-29bddcd3-a148-49e5-bd54-9732d0985fac",
+          "targetHandle": "bottom-target",
+          "id": "edge-e79e9a69-81f8-4dc0-b590-aeafd27c71cb",
+          "data": {
+            "color": "#22c55e",
+            "lineStyle": "dashed",
+            "strokeWidth": 1
+          },
+          "style": {
+            "stroke": "#22c55e",
+            "strokeWidth": 1,
+            "strokeDasharray": "8 4"
+          }
+        }
+      ],
+      "viewport": {
+        "x": 345.1870838842036,
+        "y": -24.592435719873947,
+        "zoom": 0.3071771606030472
+      }
+    }
+  ],
+  "activeInvestigationId": "ccc2eefb-1dab-4cf9-9410-1c22e40d5bbf",
+  "aiApiKey": "",
+  "aiProvider": "openai",
+  "aiChatHistory": [],
+  "showDots": true,
+  "createdAt": "2026-03-26T10:12:14.470Z",
+  "updatedAt": "2026-03-26T10:12:14.470Z"
+}
