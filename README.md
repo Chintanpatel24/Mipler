@@ -9,7 +9,7 @@
 
 ---
 
-## What's New in v2
+>## What's New in v2
 
 | Change | Details |
 |--------|---------|
@@ -23,7 +23,7 @@
 
 ---
 
-## Requirements
+>## Requirements
 
 - **Node.js** v18 or higher — [nodejs.org](https://nodejs.org)
 - **Ollama** — [ollama.com](https://ollama.com)
@@ -33,7 +33,7 @@ No API keys. No internet connection required after initial model download.
 
 ---
 
-## Quick Start
+>## Quick Start
 
 ```bash
 # 1. Clone or unzip Mipler
@@ -53,7 +53,7 @@ Then open your browser at **http://localhost:3000**
 
 ---
 
-## What `start.sh` Does
+>## What `start.sh` Does
 
 The startup script handles everything automatically:
 
@@ -70,7 +70,7 @@ PORT=8080 bash start.sh
 
 ---
 
-## Features
+>## Features
 
 ### Investigation Canvases (Two Separate Workspaces)
 
@@ -218,15 +218,16 @@ bash start.sh
 
 ---
 
-## Example images
+>## Example images
 
 <div align=center>
 <img src=image/test.png>
-<img src=images/t2.png>
+<img src=image/t2.png>
+<img src=image/agent.png>
 </div>
 ---
 
-## Project Structure
+>## Project Structure
 
 ```
 mipler-main/
@@ -261,7 +262,7 @@ mipler-main/
 
 ---
 
-## Troubleshooting
+>## Troubleshooting
 
 **"Ollama not detected"**
 - Run `OLLAMA_ORIGINS=* ollama serve` in a terminal.
@@ -279,9 +280,3 @@ mipler-main/
 
 **Port already in use**
 - Run `PORT=8080 bash start.sh`
-
----
-
-## License
-
-MIT — see `LICENSE`
