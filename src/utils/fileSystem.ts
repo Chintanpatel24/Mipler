@@ -43,18 +43,83 @@ export function downloadWorkspace(state: WorkspaceState): void {
   URL.revokeObjectURL(url);
 }
 
-export function uploadWorkspace(): Promise<WorkspaceState | null> {
+/**
+ * Upload any JSON file — accepts:
+ *  1. A full Mipler workspace export  (has `investigations` or `nodes`)
+ *  2. A Mipler mindmap export         (has `answer` + `mindmap`)
+ *  3. Any arbitrary JSON              (wrapped as raw data for inspection)
+ *
+ * Returns { type, data } so the caller can decide how to handle it.
+ */
+export type ImportedFile =
+  | { type: 'workspace'; data: WorkspaceState }
+  | { type: 'mindmap'; data: MindmapImport }
+  | { type: 'raw'; data: unknown; filename: string };
+
+export interface MindmapImport {
+  answer: string;
+  mindmap: {
+    root: string;
+    nodes: MindmapNode[];
+  };
+}
+
+export interface MindmapNode {
+  id: string;
+  label: string;
+  children: MindmapNode[];
+}
+
+export function uploadJsonFile(): Promise<ImportedFile | null> {
   return new Promise((resolve) => {
     const input = document.createElement('input');
     input.type = 'file';
-    input.accept = '.json';
+    input.accept = '.json,application/json';
+    input.onchange = async () => {
+      const f = input.files?.[0];
+      if (!f) return resolve(null);
+      let parsed: any;
+      try {
+        parsed = JSON.parse(await f.text());
+      } catch {
+        throw new Error(`"${f.name}" is not valid JSON — please check the file.`);
+      }
+
+      // Detect mindmap export
+      if (parsed && typeof parsed === 'object' && parsed.answer !== undefined && parsed.mindmap?.root) {
+        return resolve({ type: 'mindmap', data: parsed as MindmapImport });
+      }
+
+      // Detect workspace export (has investigations array or nodes array)
+      if (
+        parsed &&
+        typeof parsed === 'object' &&
+        (Array.isArray(parsed.investigations) || Array.isArray(parsed.nodes))
+      ) {
+        return resolve({ type: 'workspace', data: parsed as WorkspaceState });
+      }
+
+      // Fallback — raw JSON for inspection
+      return resolve({ type: 'raw', data: parsed, filename: f.name });
+    };
+    input.click();
+  });
+}
+
+/** Legacy shim used by ImportModal */
+export function uploadWorkspace(): Promise<WorkspaceState | null> {
+  return new Promise((resolve, reject) => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json,application/json';
     input.onchange = async () => {
       const f = input.files?.[0];
       if (!f) return resolve(null);
       try {
-        resolve(JSON.parse(await f.text()) as WorkspaceState);
+        const parsed = JSON.parse(await f.text());
+        resolve(parsed as WorkspaceState);
       } catch {
-        resolve(null);
+        reject(new Error(`"${f.name}" is not valid JSON — please check the file and try again.`));
       }
     };
     input.click();

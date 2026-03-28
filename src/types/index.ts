@@ -3,8 +3,6 @@ import type { Node, Edge } from 'reactflow';
 export type CardType =
   | 'note'
   | 'image'
-  | 'gif'
-  | 'video'
   | 'pdf'
   | 'whois'
   | 'dns'
@@ -20,8 +18,6 @@ export interface CardData {
   content: string;
   url?: string;
   imageData?: string;
-  gifData?: string;
-  videoData?: string;
   pdfData?: string;
   fileName?: string;
   width?: number;
@@ -53,10 +49,6 @@ export interface WorkspaceState {
   name: string;
   investigations: Investigation[];
   activeInvestigationId: string;
-  aiApiKey?: string;
-  aiProvider?: string;
-  llmBaseUrl?: string;
-  llmModel?: string;
   aiChatHistory?: AiMessage[];
   showDots: boolean;
   createdAt: string;
@@ -72,4 +64,27 @@ export interface AiMessage {
   role: 'user' | 'assistant';
   content: string;
   timestamp: string;
+}
+
+export interface UploadedFile {
+  id: string;
+  name: string;
+  type: string;
+  data: unknown;
+  size: number;
+  uploadedAt: string;
+}
+
+export interface MindmapNode {
+  id: string;
+  label: string;
+  children: MindmapNode[];
+}
+
+export interface MindmapResult {
+  answer: string;
+  mindmap: {
+    root: string;
+    nodes: MindmapNode[];
+  };
 }

@@ -107,24 +107,3 @@
   tab-size: 2;
 }
 .api-workspace::selection { background: #264f78; }
-/* Enhanced MiniMap styling */
-.react-flow__minimap {
-  background: #0a0a0a !important;
-  border: 1px solid #2a2a2a !important;
-  border-radius: 6px !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
-}
-
-.react-flow__minimap-mask {
-  fill: rgba(0,0,0,0.75) !important;
-  stroke: #3b82f6 !important;
-  stroke-width: 2px !important;
-  rx: 4 !important;
-}
-
-.react-flow__minimap-node {
-  fill: #3a3a3a !important;
-  stroke: #555 !important;
-  stroke-width: 1px !important;
-  rx: 3 !important;
-}

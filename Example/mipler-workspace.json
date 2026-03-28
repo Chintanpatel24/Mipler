@@ -1,17 +1,17 @@
 {
-  "id": "ac8e350b-1685-4933-9466-ff18ffa0eba2",
+  "id": "8bd290b5-b286-4577-bfc7-5ebc4cf75f03",
   "name": "Mipler Export",
   "investigations": [
     {
-      "id": "9f4aa4dc-d0bf-484e-8643-6142490b9c0f",
-      "name": "Combined Investigation",
+      "id": "ccc2eefb-1dab-4cf9-9410-1c22e40d5bbf",
+      "name": "mipler testing",
       "nodes": [
         {
-          "id": "card-58b2a6c4-127e-43f2-acba-8986f55f1721",
+          "id": "card-40a38345-5b3b-439f-a16a-962605d2ff85",
           "type": "miplerCard",
           "position": {
-            "x": 4052,
-            "y": -32
+            "x": 304,
+            "y": 320
           },
           "data": {
             "cardType": "image",
@@ -23,19 +23,19 @@
             "updatedAt": "2026-03-26T10:00:06.096Z"
           },
           "width": 320,
-          "height": 185,
+          "height": 183,
           "selected": false,
           "positionAbsolute": {
-            "x": 384,
-            "y": -32
+            "x": 304,
+            "y": 320
           },
           "dragging": false
         },
         {
-          "id": "card-9729fc63-c197-49a5-9b9e-ffae9d054ef4",
+          "id": "card-29bddcd3-a148-49e5-bd54-9732d0985fac",
           "type": "miplerCard",
           "position": {
-            "x": 3492,
+            "x": -176,
             "y": 400
           },
           "data": {
@@ -48,7 +48,7 @@
             "updatedAt": "2026-03-26T10:00:06.256Z"
           },
           "width": 320,
-          "height": 185,
+          "height": 183,
           "selected": false,
           "positionAbsolute": {
             "x": -176,
@@ -57,10 +57,10 @@
           "dragging": false
         },
         {
-          "id": "card-b0341e07-6b85-4633-b942-77320ac1218c",
+          "id": "card-2c1f7c5f-268a-4273-8225-460b10f83130",
           "type": "miplerCard",
           "position": {
-            "x": 2708,
+            "x": -720,
             "y": 384
           },
           "data": {
@@ -73,507 +73,7 @@
             "updatedAt": "2026-03-26T10:01:05.257Z"
           },
           "width": 320,
-          "height": 185,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -960,
-            "y": 384
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-d3cc32b7-8941-4d35-926f-43684dcba61b",
-          "type": "miplerCard",
-          "position": {
-            "x": 4004,
-            "y": 960
-          },
-          "data": {
-            "cardType": "dns",
-            "title": "DNS Lookup",
-            "content": "",
-            "width": 360,
-            "cardColor": "#531818",
-            "createdAt": "2026-03-26T10:03:23.356Z",
-            "updatedAt": "2026-03-26T10:03:23.356Z"
-          },
-          "width": 360,
-          "height": 94,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 336,
-            "y": 960
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-013f7082-3140-4d45-9980-dfcbc8acb94a",
-          "type": "miplerCard",
-          "position": {
-            "x": 3092,
-            "y": 1376
-          },
-          "data": {
-            "cardType": "reverse-image",
-            "title": "Reverse Image Search",
-            "content": "",
-            "width": 440,
-            "cardColor": "#134210",
-            "createdAt": "2026-03-26T10:04:29.893Z",
-            "updatedAt": "2026-03-26T10:04:29.893Z"
-          },
-          "width": 440,
-          "height": 348,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -576,
-            "y": 1376
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-5ef3bf69-2528-4487-97d4-e003e1a62e05",
-          "type": "miplerCard",
-          "position": {
-            "x": 3988,
-            "y": 1248
-          },
-          "data": {
-            "cardType": "pdf",
-            "title": "Document",
-            "content": "",
-            "width": 360,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-26T10:05:41.934Z",
-            "updatedAt": "2026-03-26T10:05:41.934Z"
-          },
-          "width": 360,
-          "height": 140,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 320,
-            "y": 1248
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-a3fbe8f8-6e79-45f1-b9c3-8307be8a99f6",
-          "type": "miplerCard",
-          "position": {
-            "x": 2132,
-            "y": 944
-          },
-          "data": {
-            "cardType": "osint-framework",
-            "title": "OSINT Framework",
-            "content": "",
-            "width": 440,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-26T10:05:45.965Z",
-            "updatedAt": "2026-03-26T10:05:45.965Z"
-          },
-          "width": 440,
-          "height": 357,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -1536,
-            "y": 944
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-f8e6546e-26bb-4391-9f78-176c9470ebe7",
-          "type": "miplerCard",
-          "position": {
-            "x": 3364,
-            "y": 768
-          },
-          "data": {
-            "cardType": "whois",
-            "title": "WHOIS Lookup",
-            "content": "",
-            "width": 360,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-26T10:09:57.523Z",
-            "updatedAt": "2026-03-26T10:09:57.523Z"
-          },
-          "width": 360,
-          "height": 94,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -304,
-            "y": 768
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-553ec3e6-e218-44bb-b21f-ea669d47914a",
-          "type": "miplerCard",
-          "position": {
-            "x": 4800,
-            "y": 1712
-          },
-          "data": {
-            "cardType": "pdf",
-            "title": "Document",
-            "content": "",
-            "width": 360,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:44:02.951Z",
-            "updatedAt": "2026-03-27T07:44:02.951Z"
-          },
-          "width": 360,
-          "height": 140,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 4800,
-            "y": 1712
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-c4cfce10-17d4-4dfb-a142-851f506fc0d1",
-          "type": "miplerCard",
-          "position": {
-            "x": 4836,
-            "y": 144
-          },
-          "data": {
-            "cardType": "pdf",
-            "title": "Document",
-            "content": "",
-            "width": 360,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:44:03.144Z",
-            "updatedAt": "2026-03-27T07:44:03.144Z"
-          },
-          "width": 360,
-          "height": 140,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 1168,
-            "y": 144
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-9946edf6-c88e-43f3-bc4b-4ce1617a617a",
-          "type": "miplerCard",
-          "position": {
-            "x": 4436,
-            "y": 2224
-          },
-          "data": {
-            "cardType": "pdf",
-            "title": "Document",
-            "content": "",
-            "width": 360,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:44:03.319Z",
-            "updatedAt": "2026-03-27T07:44:03.319Z"
-          },
-          "width": 360,
-          "height": 140,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 768,
-            "y": 2224
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-41f6e3b8-3cde-405f-9e9e-15a042bd126f",
-          "type": "miplerCard",
-          "position": {
-            "x": 5188,
-            "y": 496
-          },
-          "data": {
-            "cardType": "pdf",
-            "title": "Document",
-            "content": "",
-            "width": 360,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:44:03.487Z",
-            "updatedAt": "2026-03-27T07:44:03.487Z"
-          },
-          "width": 360,
-          "height": 140,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 1520,
-            "y": 496
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-6202b815-b401-4f0a-8058-8c8d5c31f0bc",
-          "type": "miplerCard",
-          "position": {
-            "x": 4500,
-            "y": 544
-          },
-          "data": {
-            "cardType": "dns",
-            "title": "DNS Lookup",
-            "content": "",
-            "width": 360,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:44:13.110Z",
-            "updatedAt": "2026-03-27T07:44:13.110Z"
-          },
-          "width": 360,
-          "height": 94,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 832,
-            "y": 544
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-49791a98-17f4-4363-9d83-29fc695c02ac",
-          "type": "miplerCard",
-          "position": {
-            "x": 2452,
-            "y": 1888
-          },
-          "data": {
-            "cardType": "dns",
-            "title": "DNS Lookup",
-            "content": "",
-            "width": 360,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:44:13.751Z",
-            "updatedAt": "2026-03-27T07:44:13.751Z"
-          },
-          "width": 360,
-          "height": 94,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -1216,
-            "y": 1888
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-4a593d94-641b-4c3b-ad46-b3961a8cc8ea",
-          "type": "miplerCard",
-          "position": {
-            "x": 5476,
-            "y": 896
-          },
-          "data": {
-            "cardType": "osint-framework",
-            "title": "OSINT Framework",
-            "content": "",
-            "width": 440,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:44:20.026Z",
-            "updatedAt": "2026-03-27T07:44:20.026Z"
-          },
-          "width": 440,
-          "height": 357,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 1808,
-            "y": 896
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-7050b77c-9a9d-4947-849e-d22fa25fe9e9",
-          "type": "miplerCard",
-          "position": {
-            "x": 3188,
-            "y": 2112
-          },
-          "data": {
-            "cardType": "osint-framework",
-            "title": "OSINT Framework",
-            "content": "",
-            "width": 440,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:45:56.921Z",
-            "updatedAt": "2026-03-27T07:45:56.921Z"
-          },
-          "width": 440,
-          "height": 357,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -480,
-            "y": 2112
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-74658813-f4fa-4cff-b27f-1f95cb196dc0",
-          "type": "miplerCard",
-          "position": {
-            "x": 1172,
-            "y": 1824
-          },
-          "data": {
-            "cardType": "osint-framework",
-            "title": "OSINT Framework",
-            "content": "",
-            "width": 440,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:45:57.092Z",
-            "updatedAt": "2026-03-27T07:45:57.092Z"
-          },
-          "width": 440,
-          "height": 357,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -2496,
-            "y": 1824
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-bf74395d-eb30-4790-b373-43b461eb2228",
-          "type": "miplerCard",
-          "position": {
-            "x": 1476,
-            "y": -176
-          },
-          "data": {
-            "cardType": "osint-framework",
-            "title": "OSINT Framework",
-            "content": "",
-            "width": 440,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:45:57.257Z",
-            "updatedAt": "2026-03-27T07:45:57.257Z"
-          },
-          "width": 440,
-          "height": 357,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -2192,
-            "y": -176
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-937caa88-0ebe-407d-a45c-14a190f64b8a",
-          "type": "miplerCard",
-          "position": {
-            "x": 500,
-            "y": 272
-          },
-          "data": {
-            "cardType": "reverse-image",
-            "title": "Reverse Image Search",
-            "content": "",
-            "width": 440,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:46:07.908Z",
-            "updatedAt": "2026-03-27T07:46:07.908Z"
-          },
-          "width": 440,
-          "height": 348,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -3168,
-            "y": 272
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-0b56c4ad-ea18-4feb-a0dc-5272ea271ef2",
-          "type": "miplerCard",
-          "position": {
-            "x": 2276,
-            "y": 144
-          },
-          "data": {
-            "cardType": "whois",
-            "title": "WHOIS Lookup",
-            "content": "",
-            "width": 360,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:46:12.094Z",
-            "updatedAt": "2026-03-27T07:46:12.094Z"
-          },
-          "width": 360,
-          "height": 94,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -1392,
-            "y": 144
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-5d99f074-8792-40ab-8078-c06479bc29c1",
-          "type": "miplerCard",
-          "position": {
-            "x": 10112,
-            "y": 96
-          },
-          "data": {
-            "cardType": "image",
-            "title": "Image",
-            "content": "",
-            "width": 320,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-26T10:00:06.096Z",
-            "updatedAt": "2026-03-26T10:00:06.096Z"
-          },
-          "width": 320,
-          "height": 185,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 528,
-            "y": 96
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-4695b9d1-835b-4bba-9e05-8980c8adda5a",
-          "type": "miplerCard",
-          "position": {
-            "x": 9408,
-            "y": 400
-          },
-          "data": {
-            "cardType": "image",
-            "title": "Image",
-            "content": "",
-            "width": 320,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-26T10:00:06.256Z",
-            "updatedAt": "2026-03-26T10:00:06.256Z"
-          },
-          "width": 320,
-          "height": 185,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -176,
-            "y": 400
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-27d24f66-3f48-4bc1-8ba8-f0d878c52be0",
-          "type": "miplerCard",
-          "position": {
-            "x": 8864,
-            "y": 384
-          },
-          "data": {
-            "cardType": "image",
-            "title": "Image",
-            "content": "",
-            "width": 320,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-26T10:01:05.257Z",
-            "updatedAt": "2026-03-26T10:01:05.257Z"
-          },
-          "width": 320,
-          "height": 185,
+          "height": 183,
           "selected": false,
           "positionAbsolute": {
             "x": -720,
@@ -582,11 +82,11 @@
           "dragging": false
         },
         {
-          "id": "card-866057af-e90d-40df-962c-97a03528b2e0",
+          "id": "card-e489062f-8054-40b8-b436-893963911e89",
           "type": "miplerCard",
           "position": {
-            "x": 9920,
-            "y": 960
+            "x": 256,
+            "y": 816
           },
           "data": {
             "cardType": "dns",
@@ -598,20 +98,20 @@
             "updatedAt": "2026-03-26T10:03:23.356Z"
           },
           "width": 360,
-          "height": 94,
-          "selected": false,
+          "height": 92,
+          "selected": true,
           "positionAbsolute": {
-            "x": 336,
-            "y": 960
+            "x": 256,
+            "y": 816
           },
           "dragging": false
         },
         {
-          "id": "card-0ec8a327-abea-4214-878f-24a6efb95650",
+          "id": "card-32914d89-6605-4604-9dad-b8f2df51c098",
           "type": "miplerCard",
           "position": {
-            "x": 9008,
-            "y": 1376
+            "x": -528,
+            "y": 1104
           },
           "data": {
             "cardType": "reverse-image",
@@ -623,20 +123,20 @@
             "updatedAt": "2026-03-26T10:04:29.893Z"
           },
           "width": 440,
-          "height": 348,
+          "height": 346,
           "selected": false,
           "positionAbsolute": {
-            "x": -576,
-            "y": 1376
+            "x": -528,
+            "y": 1104
           },
           "dragging": false
         },
         {
-          "id": "card-3a48bca1-7c2d-4c02-a9bc-206f82767be4",
+          "id": "card-e1112c63-cb65-4f45-a695-70fa7dd4b4fe",
           "type": "miplerCard",
           "position": {
-            "x": 9904,
-            "y": 1248
+            "x": 224,
+            "y": 1024
           },
           "data": {
             "cardType": "pdf",
@@ -648,20 +148,20 @@
             "updatedAt": "2026-03-26T10:05:41.934Z"
           },
           "width": 360,
-          "height": 140,
+          "height": 138,
           "selected": false,
           "positionAbsolute": {
-            "x": 320,
-            "y": 1248
+            "x": 224,
+            "y": 1024
           },
           "dragging": false
         },
         {
-          "id": "card-4b4ceeb1-6ab1-4bbd-9131-377d1c55a83a",
+          "id": "card-9e955af2-6890-47a3-9a27-fd776f4f6d0d",
           "type": "miplerCard",
           "position": {
-            "x": 8048,
-            "y": 944
+            "x": -1056,
+            "y": 672
           },
           "data": {
             "cardType": "osint-framework",
@@ -673,19 +173,19 @@
             "updatedAt": "2026-03-26T10:05:45.965Z"
           },
           "width": 440,
-          "height": 357,
+          "height": 356,
           "selected": false,
           "positionAbsolute": {
-            "x": -1536,
-            "y": 944
+            "x": -1056,
+            "y": 672
           },
           "dragging": false
         },
         {
-          "id": "card-ee4959a9-2aaf-4340-8985-e49ad5745758",
+          "id": "card-6803ca25-0d3b-4907-b348-e1c405322086",
           "type": "miplerCard",
           "position": {
-            "x": 9280,
+            "x": -304,
             "y": 768
           },
           "data": {
@@ -698,311 +198,11 @@
             "updatedAt": "2026-03-26T10:09:57.523Z"
           },
           "width": 360,
-          "height": 94,
+          "height": 92,
           "selected": false,
           "positionAbsolute": {
             "x": -304,
             "y": 768
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-f09280d7-b0d4-4656-96c1-d540af35e1ad",
-          "type": "miplerCard",
-          "position": {
-            "x": 10784,
-            "y": 1680
-          },
-          "data": {
-            "cardType": "pdf",
-            "title": "Document",
-            "content": "",
-            "width": 360,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:44:02.951Z",
-            "updatedAt": "2026-03-27T07:44:02.951Z"
-          },
-          "width": 360,
-          "height": 140,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 1200,
-            "y": 1680
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-795b4767-0476-4973-ae29-3d4a6e09b058",
-          "type": "miplerCard",
-          "position": {
-            "x": 10752,
-            "y": 144
-          },
-          "data": {
-            "cardType": "pdf",
-            "title": "Document",
-            "content": "",
-            "width": 360,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:44:03.144Z",
-            "updatedAt": "2026-03-27T07:44:03.144Z"
-          },
-          "width": 360,
-          "height": 140,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 1168,
-            "y": 144
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-08cbfbf6-a3d0-45ce-abb5-351d378ba14c",
-          "type": "miplerCard",
-          "position": {
-            "x": 10352,
-            "y": 2224
-          },
-          "data": {
-            "cardType": "pdf",
-            "title": "Document",
-            "content": "",
-            "width": 360,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:44:03.319Z",
-            "updatedAt": "2026-03-27T07:44:03.319Z"
-          },
-          "width": 360,
-          "height": 140,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 768,
-            "y": 2224
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-fb8943f9-e0ff-4593-8301-4b96cee49756",
-          "type": "miplerCard",
-          "position": {
-            "x": 11104,
-            "y": 496
-          },
-          "data": {
-            "cardType": "pdf",
-            "title": "Document",
-            "content": "",
-            "width": 360,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:44:03.487Z",
-            "updatedAt": "2026-03-27T07:44:03.487Z"
-          },
-          "width": 360,
-          "height": 140,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 1520,
-            "y": 496
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-5b34c700-6ba2-4e49-adc1-f539310a233d",
-          "type": "miplerCard",
-          "position": {
-            "x": 10416,
-            "y": 544
-          },
-          "data": {
-            "cardType": "dns",
-            "title": "DNS Lookup",
-            "content": "",
-            "width": 360,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:44:13.110Z",
-            "updatedAt": "2026-03-27T07:44:13.110Z"
-          },
-          "width": 360,
-          "height": 94,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 832,
-            "y": 544
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-afa6ced8-d6fe-4bdf-919a-4be1ef56d2bb",
-          "type": "miplerCard",
-          "position": {
-            "x": 8368,
-            "y": 1888
-          },
-          "data": {
-            "cardType": "dns",
-            "title": "DNS Lookup",
-            "content": "",
-            "width": 360,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:44:13.751Z",
-            "updatedAt": "2026-03-27T07:44:13.751Z"
-          },
-          "width": 360,
-          "height": 94,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -1216,
-            "y": 1888
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-43a76b9c-bfbf-40b4-8ff3-46538fa4e91e",
-          "type": "miplerCard",
-          "position": {
-            "x": 11392,
-            "y": 896
-          },
-          "data": {
-            "cardType": "osint-framework",
-            "title": "OSINT Framework",
-            "content": "",
-            "width": 440,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:44:20.026Z",
-            "updatedAt": "2026-03-27T07:44:20.026Z"
-          },
-          "width": 440,
-          "height": 357,
-          "selected": false,
-          "positionAbsolute": {
-            "x": 1808,
-            "y": 896
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-1969f4be-e1f4-4bc8-9a07-0b1479f5cff9",
-          "type": "miplerCard",
-          "position": {
-            "x": 9104,
-            "y": 2112
-          },
-          "data": {
-            "cardType": "osint-framework",
-            "title": "OSINT Framework",
-            "content": "",
-            "width": 440,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:45:56.921Z",
-            "updatedAt": "2026-03-27T07:45:56.921Z"
-          },
-          "width": 440,
-          "height": 357,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -480,
-            "y": 2112
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-4efe176e-9c29-4add-a9aa-d3dd28ee49f3",
-          "type": "miplerCard",
-          "position": {
-            "x": 7088,
-            "y": 1824
-          },
-          "data": {
-            "cardType": "osint-framework",
-            "title": "OSINT Framework",
-            "content": "",
-            "width": 440,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:45:57.092Z",
-            "updatedAt": "2026-03-27T07:45:57.092Z"
-          },
-          "width": 440,
-          "height": 357,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -2496,
-            "y": 1824
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-781d5851-2a78-462c-85c0-c82b1d89b7a7",
-          "type": "miplerCard",
-          "position": {
-            "x": 7392,
-            "y": -176
-          },
-          "data": {
-            "cardType": "osint-framework",
-            "title": "OSINT Framework",
-            "content": "",
-            "width": 440,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:45:57.257Z",
-            "updatedAt": "2026-03-27T07:45:57.257Z"
-          },
-          "width": 440,
-          "height": 357,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -2192,
-            "y": -176
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-f625c0b4-30cc-4d41-a1ba-6faafb8dc6bf",
-          "type": "miplerCard",
-          "position": {
-            "x": 6416,
-            "y": 272
-          },
-          "data": {
-            "cardType": "reverse-image",
-            "title": "Reverse Image Search",
-            "content": "",
-            "width": 440,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:46:07.908Z",
-            "updatedAt": "2026-03-27T07:46:07.908Z"
-          },
-          "width": 440,
-          "height": 348,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -3168,
-            "y": 272
-          },
-          "dragging": false
-        },
-        {
-          "id": "card-5354eedb-9902-4894-9158-6d252ebf44c1",
-          "type": "miplerCard",
-          "position": {
-            "x": 8192,
-            "y": 144
-          },
-          "data": {
-            "cardType": "whois",
-            "title": "WHOIS Lookup",
-            "content": "",
-            "width": 360,
-            "cardColor": "#1e1e1e",
-            "createdAt": "2026-03-27T07:46:12.094Z",
-            "updatedAt": "2026-03-27T07:46:12.094Z"
-          },
-          "width": 360,
-          "height": 94,
-          "selected": false,
-          "positionAbsolute": {
-            "x": -1392,
-            "y": 144
           },
           "dragging": false
         }
@@ -1011,11 +211,11 @@
         {
           "type": "rope",
           "animated": false,
-          "source": "card-58b2a6c4-127e-43f2-acba-8986f55f1721",
+          "source": "card-40a38345-5b3b-439f-a16a-962605d2ff85",
           "sourceHandle": "left-source",
-          "target": "card-9729fc63-c197-49a5-9b9e-ffae9d054ef4",
+          "target": "card-29bddcd3-a148-49e5-bd54-9732d0985fac",
           "targetHandle": "right-target",
-          "id": "edge-c23a514b-e19c-45cd-b1f3-5ef2ecc99bab",
+          "id": "edge-ac905310-1ca8-4c4a-ba0b-45bd534ce0e6",
           "data": {
             "color": "#f97316",
             "lineStyle": "dotted",
@@ -1030,11 +230,11 @@
         {
           "type": "rope",
           "animated": false,
-          "source": "card-9729fc63-c197-49a5-9b9e-ffae9d054ef4",
+          "source": "card-29bddcd3-a148-49e5-bd54-9732d0985fac",
           "sourceHandle": "left-source",
-          "target": "card-b0341e07-6b85-4633-b942-77320ac1218c",
+          "target": "card-2c1f7c5f-268a-4273-8225-460b10f83130",
           "targetHandle": "right-target",
-          "id": "edge-fac09c7d-c06d-48f6-8c3b-3ac7bfaf783b",
+          "id": "edge-f8ffdc60-be31-463d-852d-27aa3c4ad96f",
           "data": {
             "color": "#f97316",
             "lineStyle": "solid",
@@ -1049,11 +249,11 @@
         {
           "type": "rope",
           "animated": false,
-          "source": "card-9729fc63-c197-49a5-9b9e-ffae9d054ef4",
+          "source": "card-29bddcd3-a148-49e5-bd54-9732d0985fac",
           "sourceHandle": "top-source",
-          "target": "card-58b2a6c4-127e-43f2-acba-8986f55f1721",
+          "target": "card-40a38345-5b3b-439f-a16a-962605d2ff85",
           "targetHandle": "top-target",
-          "id": "edge-93c6cb1d-b72a-4195-a864-0e1b5186c6ab",
+          "id": "edge-501e5d06-4840-40f9-93c2-7d19d5b4aef9",
           "data": {
             "color": "#f97316",
             "lineStyle": "solid",
@@ -1068,11 +268,11 @@
         {
           "type": "rope",
           "animated": false,
-          "source": "card-58b2a6c4-127e-43f2-acba-8986f55f1721",
+          "source": "card-40a38345-5b3b-439f-a16a-962605d2ff85",
           "sourceHandle": "bottom-source",
-          "target": "card-58b2a6c4-127e-43f2-acba-8986f55f1721",
+          "target": "card-40a38345-5b3b-439f-a16a-962605d2ff85",
           "targetHandle": "right-target",
-          "id": "edge-382cb8ee-fda2-4cfe-b350-6c196d8f8483",
+          "id": "edge-4c778fe9-62a3-4f03-a579-5c0aeadf6824",
           "data": {
             "color": "#f97316",
             "lineStyle": "solid",
@@ -1087,11 +287,11 @@
         {
           "type": "rope",
           "animated": false,
-          "source": "card-d3cc32b7-8941-4d35-926f-43684dcba61b",
+          "source": "card-e489062f-8054-40b8-b436-893963911e89",
           "sourceHandle": "top-source",
-          "target": "card-9729fc63-c197-49a5-9b9e-ffae9d054ef4",
+          "target": "card-29bddcd3-a148-49e5-bd54-9732d0985fac",
           "targetHandle": "right-target",
-          "id": "edge-ce27b09e-87d9-4aa6-9c2d-c108af078de9",
+          "id": "edge-f1051c74-3354-44d4-b3d9-cc9e8ca326d5",
           "data": {
             "color": "#e0e0e0",
             "lineStyle": "solid",
@@ -1106,11 +306,11 @@
         {
           "type": "rope",
           "animated": false,
-          "source": "card-013f7082-3140-4d45-9980-dfcbc8acb94a",
+          "source": "card-32914d89-6605-4604-9dad-b8f2df51c098",
           "sourceHandle": "right-source",
-          "target": "card-d3cc32b7-8941-4d35-926f-43684dcba61b",
+          "target": "card-e489062f-8054-40b8-b436-893963911e89",
           "targetHandle": "left-target",
-          "id": "edge-ced21612-954d-4d04-bacc-0e22209e536b",
+          "id": "edge-cd268f08-2619-44d7-9e14-9f3591734849",
           "data": {
             "color": "#3b82f6",
             "lineStyle": "solid",
@@ -1125,11 +325,11 @@
         {
           "type": "rope",
           "animated": false,
-          "source": "card-d3cc32b7-8941-4d35-926f-43684dcba61b",
+          "source": "card-e489062f-8054-40b8-b436-893963911e89",
           "sourceHandle": "bottom-source",
-          "target": "card-5ef3bf69-2528-4487-97d4-e003e1a62e05",
+          "target": "card-e1112c63-cb65-4f45-a695-70fa7dd4b4fe",
           "targetHandle": "top-target",
-          "id": "edge-c092eb1d-4db8-4e55-a55b-ab41250adf94",
+          "id": "edge-a105c6cf-5c62-44af-9fad-79f52b1ce8d9",
           "data": {
             "color": "#ef4444",
             "lineStyle": "solid",
@@ -1144,11 +344,11 @@
         {
           "type": "rope",
           "animated": false,
-          "source": "card-013f7082-3140-4d45-9980-dfcbc8acb94a",
+          "source": "card-32914d89-6605-4604-9dad-b8f2df51c098",
           "sourceHandle": "top-source",
-          "target": "card-a3fbe8f8-6e79-45f1-b9c3-8307be8a99f6",
+          "target": "card-9e955af2-6890-47a3-9a27-fd776f4f6d0d",
           "targetHandle": "right-target",
-          "id": "edge-611769ff-b9bf-4ca7-8c6e-1ca9c7d8e803",
+          "id": "edge-8f876188-a1f7-4bf4-b641-90492297b4a8",
           "data": {
             "color": "#eab308",
             "lineStyle": "solid",
@@ -1163,11 +363,11 @@
         {
           "type": "rope",
           "animated": false,
-          "source": "card-b0341e07-6b85-4633-b942-77320ac1218c",
+          "source": "card-2c1f7c5f-268a-4273-8225-460b10f83130",
           "sourceHandle": "bottom-source",
-          "target": "card-a3fbe8f8-6e79-45f1-b9c3-8307be8a99f6",
+          "target": "card-9e955af2-6890-47a3-9a27-fd776f4f6d0d",
           "targetHandle": "top-target",
-          "id": "edge-c13ae35f-9ca1-40be-80c4-f84f47f4d0c5",
+          "id": "edge-d3847573-09b0-4899-a7e8-705cded17fd9",
           "data": {
             "color": "#e0e0e0",
             "lineStyle": "solid",
@@ -1182,11 +382,11 @@
         {
           "type": "rope",
           "animated": false,
-          "source": "card-5ef3bf69-2528-4487-97d4-e003e1a62e05",
+          "source": "card-e1112c63-cb65-4f45-a695-70fa7dd4b4fe",
           "sourceHandle": "left-source",
-          "target": "card-f8e6546e-26bb-4391-9f78-176c9470ebe7",
+          "target": "card-6803ca25-0d3b-4907-b348-e1c405322086",
           "targetHandle": "bottom-target",
-          "id": "edge-0c22f863-a531-48f5-975d-da7003c81b51",
+          "id": "edge-c2f28944-5711-443e-8a62-6d7d28bfd556",
           "data": {
             "color": "#22c55e",
             "lineStyle": "dashed",
@@ -1201,11 +401,11 @@
         {
           "type": "rope",
           "animated": false,
-          "source": "card-d3cc32b7-8941-4d35-926f-43684dcba61b",
+          "source": "card-e489062f-8054-40b8-b436-893963911e89",
           "sourceHandle": "top-source",
-          "target": "card-9729fc63-c197-49a5-9b9e-ffae9d054ef4",
+          "target": "card-29bddcd3-a148-49e5-bd54-9732d0985fac",
           "targetHandle": "bottom-target",
-          "id": "edge-7a675f6c-cf6d-4200-8103-20a9421ab3f8",
+          "id": "edge-e79e9a69-81f8-4dc0-b590-aeafd27c71cb",
           "data": {
             "color": "#22c55e",
             "lineStyle": "dashed",
@@ -1214,1468 +414,22 @@
           "style": {
             "stroke": "#22c55e",
             "strokeWidth": 1,
-            "strokeDasharray": "8 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-6202b815-b401-4f0a-8058-8c8d5c31f0bc",
-          "sourceHandle": "right-source",
-          "target": "card-c4cfce10-17d4-4dfb-a142-851f506fc0d1",
-          "targetHandle": "bottom-target",
-          "id": "edge-903348cd-b119-4587-9162-6c3bf787fd47",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-4a593d94-641b-4c3b-ad46-b3961a8cc8ea",
-          "sourceHandle": "left-source",
-          "target": "card-d3cc32b7-8941-4d35-926f-43684dcba61b",
-          "targetHandle": "right-target",
-          "id": "edge-d021d398-6d9f-44e1-9c84-0e6dced67c28",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-553ec3e6-e218-44bb-b21f-ea669d47914a",
-          "sourceHandle": "top-source",
-          "target": "card-41f6e3b8-3cde-405f-9e9e-15a042bd126f",
-          "targetHandle": "bottom-target",
-          "id": "edge-691c48e3-a11f-49ff-8b61-9546aa6cfccf",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-58b2a6c4-127e-43f2-acba-8986f55f1721",
-          "sourceHandle": "right-target",
-          "target": "card-c4cfce10-17d4-4dfb-a142-851f506fc0d1",
-          "targetHandle": "left-target",
-          "id": "edge-eb9f4c50-e2ac-48fc-9ca7-9f614580c40a",
-          "data": {
-            "color": "#ec4899",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ec4899",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-58b2a6c4-127e-43f2-acba-8986f55f1721",
-          "sourceHandle": "right-source",
-          "target": "card-c4cfce10-17d4-4dfb-a142-851f506fc0d1",
-          "targetHandle": "left-target",
-          "id": "edge-b62b1ad3-ef12-44db-b8eb-f87cec1a4b8f",
-          "data": {
-            "color": "#ec4899",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ec4899",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-4a593d94-641b-4c3b-ad46-b3961a8cc8ea",
-          "sourceHandle": "bottom-target",
-          "target": "card-553ec3e6-e218-44bb-b21f-ea669d47914a",
-          "targetHandle": "right-target",
-          "id": "edge-7985f531-25af-4ea2-93c2-eceddd33793f",
-          "data": {
-            "color": "#ec4899",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ec4899",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-4a593d94-641b-4c3b-ad46-b3961a8cc8ea",
-          "sourceHandle": "bottom-source",
-          "target": "card-553ec3e6-e218-44bb-b21f-ea669d47914a",
-          "targetHandle": "right-source",
-          "id": "edge-e0cf98ad-4466-4742-99f0-193fc7874525",
-          "data": {
-            "color": "#ec4899",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ec4899",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-4a593d94-641b-4c3b-ad46-b3961a8cc8ea",
-          "sourceHandle": "bottom-target",
-          "target": "card-a3fbe8f8-6e79-45f1-b9c3-8307be8a99f6",
-          "targetHandle": "bottom-target",
-          "id": "edge-6680d7bd-d77f-4843-a1a1-f7c75f6603e5",
-          "data": {
-            "color": "#ec4899",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ec4899",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-4a593d94-641b-4c3b-ad46-b3961a8cc8ea",
-          "sourceHandle": "bottom-source",
-          "target": "card-5ef3bf69-2528-4487-97d4-e003e1a62e05",
-          "targetHandle": "bottom-target",
-          "id": "edge-786491b5-514c-49da-b34b-ab2962981da8",
-          "data": {
-            "color": "#ec4899",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ec4899",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-4a593d94-641b-4c3b-ad46-b3961a8cc8ea",
-          "sourceHandle": "top-source",
-          "target": "card-b0341e07-6b85-4633-b942-77320ac1218c",
-          "targetHandle": "bottom-target",
-          "id": "edge-9b729fe5-aa09-4a12-9252-f8ef73a0cc1b",
-          "data": {
-            "color": "#ec4899",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ec4899",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-6202b815-b401-4f0a-8058-8c8d5c31f0bc",
-          "sourceHandle": "bottom-source",
-          "target": "card-f8e6546e-26bb-4391-9f78-176c9470ebe7",
-          "targetHandle": "top-target",
-          "id": "edge-2625d2b7-2452-47ec-9f40-820b427749fa",
-          "data": {
-            "color": "#ec4899",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ec4899",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-58b2a6c4-127e-43f2-acba-8986f55f1721",
-          "sourceHandle": "bottom-source",
-          "target": "card-553ec3e6-e218-44bb-b21f-ea669d47914a",
-          "targetHandle": "top-target",
-          "id": "edge-fd2cd350-5423-4ed2-9ed3-4e4a06c280bd",
-          "data": {
-            "color": "#e0e0e0",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#e0e0e0",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-013f7082-3140-4d45-9980-dfcbc8acb94a",
-          "sourceHandle": "left-target",
-          "target": "card-49791a98-17f4-4363-9d83-29fc695c02ac",
-          "targetHandle": "top-target",
-          "id": "edge-b30af203-371d-45da-ae79-58557a9ce4cf",
-          "data": {
-            "color": "#e0e0e0",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#e0e0e0",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-013f7082-3140-4d45-9980-dfcbc8acb94a",
-          "sourceHandle": "left-source",
-          "target": "card-49791a98-17f4-4363-9d83-29fc695c02ac",
-          "targetHandle": "top-source",
-          "id": "edge-3ade88fb-b4da-430e-a1c7-c2303aa9f4be",
-          "data": {
-            "color": "#e0e0e0",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#e0e0e0",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-9946edf6-c88e-43f3-bc4b-4ce1617a617a",
-          "sourceHandle": "top-source",
-          "target": "card-5ef3bf69-2528-4487-97d4-e003e1a62e05",
-          "targetHandle": "bottom-target",
-          "id": "edge-46bde2a8-6755-4d6e-8459-b00060af3b34",
-          "data": {
-            "color": "#e0e0e0",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#e0e0e0",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-74658813-f4fa-4cff-b27f-1f95cb196dc0",
-          "sourceHandle": "top-source",
-          "target": "card-a3fbe8f8-6e79-45f1-b9c3-8307be8a99f6",
-          "targetHandle": "bottom-target",
-          "id": "edge-6d449012-ef16-48bd-81b9-305869240d2f",
-          "data": {
-            "color": "#3b82f6",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#3b82f6",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-a3fbe8f8-6e79-45f1-b9c3-8307be8a99f6",
-          "sourceHandle": "left-target",
-          "target": "card-937caa88-0ebe-407d-a45c-14a190f64b8a",
-          "targetHandle": "right-target",
-          "id": "edge-60d1f154-359d-431f-8cc7-988869d50086",
-          "data": {
-            "color": "#3b82f6",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#3b82f6",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-937caa88-0ebe-407d-a45c-14a190f64b8a",
-          "sourceHandle": "right-target",
-          "target": "card-a3fbe8f8-6e79-45f1-b9c3-8307be8a99f6",
-          "targetHandle": "left-target",
-          "id": "edge-f66f5e94-0787-431e-8f5a-c1aea9445844",
-          "data": {
-            "color": "#3b82f6",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#3b82f6",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-937caa88-0ebe-407d-a45c-14a190f64b8a",
-          "sourceHandle": "right-target",
-          "target": "card-49791a98-17f4-4363-9d83-29fc695c02ac",
-          "targetHandle": "left-target",
-          "id": "edge-deae4ed8-0e23-4b32-b8b3-577310105cc4",
-          "data": {
-            "color": "#3b82f6",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#3b82f6",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-49791a98-17f4-4363-9d83-29fc695c02ac",
-          "sourceHandle": "left-source",
-          "target": "card-937caa88-0ebe-407d-a45c-14a190f64b8a",
-          "targetHandle": "right-target",
-          "id": "edge-3b8c87a2-cb9e-4b81-b819-8da97cd4d8a2",
-          "data": {
-            "color": "#3b82f6",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#3b82f6",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-bf74395d-eb30-4790-b373-43b461eb2228",
-          "sourceHandle": "bottom-source",
-          "target": "card-a3fbe8f8-6e79-45f1-b9c3-8307be8a99f6",
-          "targetHandle": "left-target",
-          "id": "edge-6f8c00b6-5fbc-40e6-9544-94f1454851ca",
-          "data": {
-            "color": "#3b82f6",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#3b82f6",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-0b56c4ad-ea18-4feb-a0dc-5272ea271ef2",
-          "sourceHandle": "left-source",
-          "target": "card-bf74395d-eb30-4790-b373-43b461eb2228",
-          "targetHandle": "right-source",
-          "id": "edge-1227125c-058e-4699-8cb3-34e6e5f45fce",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-937caa88-0ebe-407d-a45c-14a190f64b8a",
-          "sourceHandle": "right-source",
-          "target": "card-bf74395d-eb30-4790-b373-43b461eb2228",
-          "targetHandle": "left-target",
-          "id": "edge-f7f30faf-43f9-4566-806e-9bcfd87e61dc",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-7050b77c-9a9d-4947-849e-d22fa25fe9e9",
-          "sourceHandle": "left-target",
-          "target": "card-49791a98-17f4-4363-9d83-29fc695c02ac",
-          "targetHandle": "bottom-target",
-          "id": "edge-3f68d9b5-a738-470e-b1f8-088b863b5c03",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-49791a98-17f4-4363-9d83-29fc695c02ac",
-          "sourceHandle": "right-source",
-          "target": "card-7050b77c-9a9d-4947-849e-d22fa25fe9e9",
-          "targetHandle": "left-target",
-          "id": "edge-e1cbab73-e81b-4a6d-b1ee-05de5ce69180",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-7050b77c-9a9d-4947-849e-d22fa25fe9e9",
-          "sourceHandle": "right-source",
-          "target": "card-9946edf6-c88e-43f3-bc4b-4ce1617a617a",
-          "targetHandle": "left-target",
-          "id": "edge-3bb7c2fd-1939-468e-8b0e-7c5d7df7f4d1",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-0b56c4ad-ea18-4feb-a0dc-5272ea271ef2",
-          "sourceHandle": "bottom-target",
-          "target": "card-b0341e07-6b85-4633-b942-77320ac1218c",
-          "targetHandle": "left-target",
-          "id": "edge-4092bb50-9f8f-4f8c-ab15-d793310339fb",
-          "data": {
-            "color": "#888888",
-            "lineStyle": "dashed",
-            "strokeWidth": 2
-          },
-          "style": {
-            "stroke": "#888888",
-            "strokeWidth": 2,
-            "strokeDasharray": "8 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-b0341e07-6b85-4633-b942-77320ac1218c",
-          "sourceHandle": "left-target",
-          "target": "card-0b56c4ad-ea18-4feb-a0dc-5272ea271ef2",
-          "targetHandle": "bottom-target",
-          "id": "edge-659cf5a7-6957-4c13-89fa-434d5104659c",
-          "data": {
-            "color": "#888888",
-            "lineStyle": "dashed",
-            "strokeWidth": 2
-          },
-          "style": {
-            "stroke": "#888888",
-            "strokeWidth": 2,
-            "strokeDasharray": "8 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-b0341e07-6b85-4633-b942-77320ac1218c",
-          "sourceHandle": "left-source",
-          "target": "card-0b56c4ad-ea18-4feb-a0dc-5272ea271ef2",
-          "targetHandle": "bottom-target",
-          "id": "edge-3526b789-c43f-4ec2-b4cc-e2cfa31f7150",
-          "data": {
-            "color": "#888888",
-            "lineStyle": "dashed",
-            "strokeWidth": 2
-          },
-          "style": {
-            "stroke": "#888888",
-            "strokeWidth": 2,
-            "strokeDasharray": "8 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-5d99f074-8792-40ab-8078-c06479bc29c1",
-          "sourceHandle": "left-source",
-          "target": "card-4695b9d1-835b-4bba-9e05-8980c8adda5a",
-          "targetHandle": "right-target",
-          "id": "edge-335d07f8-8af1-4497-966e-02d133390b20",
-          "data": {
-            "color": "#f97316",
-            "lineStyle": "dotted",
-            "strokeWidth": 4
-          },
-          "style": {
-            "stroke": "#f97316",
-            "strokeWidth": 4,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-4695b9d1-835b-4bba-9e05-8980c8adda5a",
-          "sourceHandle": "left-source",
-          "target": "card-27d24f66-3f48-4bc1-8ba8-f0d878c52be0",
-          "targetHandle": "right-target",
-          "id": "edge-f945d328-d45f-4aa9-9d98-f47e2fbdad3d",
-          "data": {
-            "color": "#f97316",
-            "lineStyle": "solid",
-            "strokeWidth": 4
-          },
-          "style": {
-            "stroke": "#f97316",
-            "strokeWidth": 4,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-4695b9d1-835b-4bba-9e05-8980c8adda5a",
-          "sourceHandle": "top-source",
-          "target": "card-5d99f074-8792-40ab-8078-c06479bc29c1",
-          "targetHandle": "top-target",
-          "id": "edge-1d181cce-ab05-485f-88ad-581f70e6e5fc",
-          "data": {
-            "color": "#f97316",
-            "lineStyle": "solid",
-            "strokeWidth": 4
-          },
-          "style": {
-            "stroke": "#f97316",
-            "strokeWidth": 4,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-5d99f074-8792-40ab-8078-c06479bc29c1",
-          "sourceHandle": "bottom-source",
-          "target": "card-5d99f074-8792-40ab-8078-c06479bc29c1",
-          "targetHandle": "right-target",
-          "id": "edge-4fe1ccc6-b3ef-4eae-ae83-44305a7ab98b",
-          "data": {
-            "color": "#f97316",
-            "lineStyle": "solid",
-            "strokeWidth": 4
-          },
-          "style": {
-            "stroke": "#f97316",
-            "strokeWidth": 4,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-866057af-e90d-40df-962c-97a03528b2e0",
-          "sourceHandle": "top-source",
-          "target": "card-4695b9d1-835b-4bba-9e05-8980c8adda5a",
-          "targetHandle": "right-target",
-          "id": "edge-3e56d8d3-db55-45b0-84e3-a87d3199be8b",
-          "data": {
-            "color": "#e0e0e0",
-            "lineStyle": "solid",
-            "strokeWidth": 4
-          },
-          "style": {
-            "stroke": "#e0e0e0",
-            "strokeWidth": 4,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-0ec8a327-abea-4214-878f-24a6efb95650",
-          "sourceHandle": "right-source",
-          "target": "card-866057af-e90d-40df-962c-97a03528b2e0",
-          "targetHandle": "left-target",
-          "id": "edge-2dae5f46-62bf-493c-adba-e483aaa12a03",
-          "data": {
-            "color": "#3b82f6",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#3b82f6",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-866057af-e90d-40df-962c-97a03528b2e0",
-          "sourceHandle": "bottom-source",
-          "target": "card-3a48bca1-7c2d-4c02-a9bc-206f82767be4",
-          "targetHandle": "top-target",
-          "id": "edge-d1e688fb-bf97-4e11-8e4f-a72137c11a7d",
-          "data": {
-            "color": "#ef4444",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ef4444",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-0ec8a327-abea-4214-878f-24a6efb95650",
-          "sourceHandle": "top-source",
-          "target": "card-4b4ceeb1-6ab1-4bbd-9131-377d1c55a83a",
-          "targetHandle": "right-target",
-          "id": "edge-ec7cd89e-ac0f-4254-b5b4-6d1dd04993ac",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-27d24f66-3f48-4bc1-8ba8-f0d878c52be0",
-          "sourceHandle": "bottom-source",
-          "target": "card-4b4ceeb1-6ab1-4bbd-9131-377d1c55a83a",
-          "targetHandle": "top-target",
-          "id": "edge-04d542f6-09f4-4bbf-87e2-85f93f83f76f",
-          "data": {
-            "color": "#e0e0e0",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#e0e0e0",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-3a48bca1-7c2d-4c02-a9bc-206f82767be4",
-          "sourceHandle": "left-source",
-          "target": "card-ee4959a9-2aaf-4340-8985-e49ad5745758",
-          "targetHandle": "bottom-target",
-          "id": "edge-6e7ee6ae-667d-4c9e-8bb1-b883a48a8aa3",
-          "data": {
-            "color": "#22c55e",
-            "lineStyle": "dashed",
-            "strokeWidth": 1
-          },
-          "style": {
-            "stroke": "#22c55e",
-            "strokeWidth": 1,
-            "strokeDasharray": "8 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-866057af-e90d-40df-962c-97a03528b2e0",
-          "sourceHandle": "top-source",
-          "target": "card-4695b9d1-835b-4bba-9e05-8980c8adda5a",
-          "targetHandle": "bottom-target",
-          "id": "edge-93d63a03-e6c3-431d-a765-315a5970a0bb",
-          "data": {
-            "color": "#22c55e",
-            "lineStyle": "dashed",
-            "strokeWidth": 1
-          },
-          "style": {
-            "stroke": "#22c55e",
-            "strokeWidth": 1,
-            "strokeDasharray": "8 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-5b34c700-6ba2-4e49-adc1-f539310a233d",
-          "sourceHandle": "right-source",
-          "target": "card-795b4767-0476-4973-ae29-3d4a6e09b058",
-          "targetHandle": "bottom-target",
-          "id": "edge-b1879e4c-4016-4fe9-89f2-09a23a51ea0e",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-43a76b9c-bfbf-40b4-8ff3-46538fa4e91e",
-          "sourceHandle": "left-source",
-          "target": "card-866057af-e90d-40df-962c-97a03528b2e0",
-          "targetHandle": "right-target",
-          "id": "edge-440e767e-5348-40cd-a382-256c38bfbffe",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-f09280d7-b0d4-4656-96c1-d540af35e1ad",
-          "sourceHandle": "top-source",
-          "target": "card-fb8943f9-e0ff-4593-8301-4b96cee49756",
-          "targetHandle": "bottom-target",
-          "id": "edge-d5830e34-f6cf-4de5-abed-dec444a66ecb",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-5d99f074-8792-40ab-8078-c06479bc29c1",
-          "sourceHandle": "right-target",
-          "target": "card-795b4767-0476-4973-ae29-3d4a6e09b058",
-          "targetHandle": "left-target",
-          "id": "edge-a68e4e40-7776-4bd6-b11b-3fac3bfc9bd5",
-          "data": {
-            "color": "#ec4899",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ec4899",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-5d99f074-8792-40ab-8078-c06479bc29c1",
-          "sourceHandle": "right-source",
-          "target": "card-795b4767-0476-4973-ae29-3d4a6e09b058",
-          "targetHandle": "left-target",
-          "id": "edge-061e77e4-9d59-4249-8f72-06b4cddd9b97",
-          "data": {
-            "color": "#ec4899",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ec4899",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-43a76b9c-bfbf-40b4-8ff3-46538fa4e91e",
-          "sourceHandle": "bottom-target",
-          "target": "card-f09280d7-b0d4-4656-96c1-d540af35e1ad",
-          "targetHandle": "right-target",
-          "id": "edge-857ace99-3f6f-4eca-a3d6-e3db254d4d8e",
-          "data": {
-            "color": "#ec4899",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ec4899",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-43a76b9c-bfbf-40b4-8ff3-46538fa4e91e",
-          "sourceHandle": "bottom-source",
-          "target": "card-f09280d7-b0d4-4656-96c1-d540af35e1ad",
-          "targetHandle": "right-source",
-          "id": "edge-5a4ce613-8ef3-4830-9137-4351f894d7a6",
-          "data": {
-            "color": "#ec4899",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ec4899",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-43a76b9c-bfbf-40b4-8ff3-46538fa4e91e",
-          "sourceHandle": "bottom-target",
-          "target": "card-4b4ceeb1-6ab1-4bbd-9131-377d1c55a83a",
-          "targetHandle": "bottom-target",
-          "id": "edge-89bc5354-46c5-4513-a94b-05c798ddedc8",
-          "data": {
-            "color": "#ec4899",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ec4899",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-43a76b9c-bfbf-40b4-8ff3-46538fa4e91e",
-          "sourceHandle": "bottom-source",
-          "target": "card-3a48bca1-7c2d-4c02-a9bc-206f82767be4",
-          "targetHandle": "bottom-target",
-          "id": "edge-f9450809-cc03-4ca7-ae28-e4e488252971",
-          "data": {
-            "color": "#ec4899",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ec4899",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-43a76b9c-bfbf-40b4-8ff3-46538fa4e91e",
-          "sourceHandle": "top-source",
-          "target": "card-27d24f66-3f48-4bc1-8ba8-f0d878c52be0",
-          "targetHandle": "bottom-target",
-          "id": "edge-ab7d5a0e-cbbf-4339-95fb-dd41f45b7441",
-          "data": {
-            "color": "#ec4899",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ec4899",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-5b34c700-6ba2-4e49-adc1-f539310a233d",
-          "sourceHandle": "bottom-source",
-          "target": "card-ee4959a9-2aaf-4340-8985-e49ad5745758",
-          "targetHandle": "top-target",
-          "id": "edge-58b9a2c6-98d4-4480-b320-fad164d28cdb",
-          "data": {
-            "color": "#ec4899",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#ec4899",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-5d99f074-8792-40ab-8078-c06479bc29c1",
-          "sourceHandle": "bottom-source",
-          "target": "card-f09280d7-b0d4-4656-96c1-d540af35e1ad",
-          "targetHandle": "top-target",
-          "id": "edge-625c4475-2cd9-4e58-85c5-2c797b3ece16",
-          "data": {
-            "color": "#e0e0e0",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#e0e0e0",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-0ec8a327-abea-4214-878f-24a6efb95650",
-          "sourceHandle": "left-target",
-          "target": "card-afa6ced8-d6fe-4bdf-919a-4be1ef56d2bb",
-          "targetHandle": "top-target",
-          "id": "edge-09657275-ecde-435f-8518-7fba902e21cb",
-          "data": {
-            "color": "#e0e0e0",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#e0e0e0",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-0ec8a327-abea-4214-878f-24a6efb95650",
-          "sourceHandle": "left-source",
-          "target": "card-afa6ced8-d6fe-4bdf-919a-4be1ef56d2bb",
-          "targetHandle": "top-source",
-          "id": "edge-d2c21ce1-53e9-4d9f-8476-5b365c017b81",
-          "data": {
-            "color": "#e0e0e0",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#e0e0e0",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-08cbfbf6-a3d0-45ce-abb5-351d378ba14c",
-          "sourceHandle": "top-source",
-          "target": "card-3a48bca1-7c2d-4c02-a9bc-206f82767be4",
-          "targetHandle": "bottom-target",
-          "id": "edge-f98bb3b0-b9d5-4a89-8a73-ca27fa7741b4",
-          "data": {
-            "color": "#e0e0e0",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#e0e0e0",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-4efe176e-9c29-4add-a9aa-d3dd28ee49f3",
-          "sourceHandle": "top-source",
-          "target": "card-4b4ceeb1-6ab1-4bbd-9131-377d1c55a83a",
-          "targetHandle": "bottom-target",
-          "id": "edge-8aae1c38-e48e-4b2e-8add-fe0b06417c72",
-          "data": {
-            "color": "#3b82f6",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#3b82f6",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-4b4ceeb1-6ab1-4bbd-9131-377d1c55a83a",
-          "sourceHandle": "left-target",
-          "target": "card-f625c0b4-30cc-4d41-a1ba-6faafb8dc6bf",
-          "targetHandle": "right-target",
-          "id": "edge-6e9b3bef-209b-420f-aaf2-28769d210960",
-          "data": {
-            "color": "#3b82f6",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#3b82f6",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-f625c0b4-30cc-4d41-a1ba-6faafb8dc6bf",
-          "sourceHandle": "right-target",
-          "target": "card-4b4ceeb1-6ab1-4bbd-9131-377d1c55a83a",
-          "targetHandle": "left-target",
-          "id": "edge-659a8757-d935-4426-9bb9-61ad2c7badf3",
-          "data": {
-            "color": "#3b82f6",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#3b82f6",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-f625c0b4-30cc-4d41-a1ba-6faafb8dc6bf",
-          "sourceHandle": "right-target",
-          "target": "card-afa6ced8-d6fe-4bdf-919a-4be1ef56d2bb",
-          "targetHandle": "left-target",
-          "id": "edge-ebd0253d-ccac-4c57-b878-89cd4e6e4ae1",
-          "data": {
-            "color": "#3b82f6",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#3b82f6",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-afa6ced8-d6fe-4bdf-919a-4be1ef56d2bb",
-          "sourceHandle": "left-source",
-          "target": "card-f625c0b4-30cc-4d41-a1ba-6faafb8dc6bf",
-          "targetHandle": "right-target",
-          "id": "edge-96b0b799-ac61-42c7-8d80-f7dbe174fb81",
-          "data": {
-            "color": "#3b82f6",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#3b82f6",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-781d5851-2a78-462c-85c0-c82b1d89b7a7",
-          "sourceHandle": "bottom-source",
-          "target": "card-4b4ceeb1-6ab1-4bbd-9131-377d1c55a83a",
-          "targetHandle": "left-target",
-          "id": "edge-e9f894fb-b3bb-4dfb-bd9e-bb10694a6f95",
-          "data": {
-            "color": "#3b82f6",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#3b82f6",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-5354eedb-9902-4894-9158-6d252ebf44c1",
-          "sourceHandle": "left-source",
-          "target": "card-781d5851-2a78-462c-85c0-c82b1d89b7a7",
-          "targetHandle": "right-source",
-          "id": "edge-70346670-04e5-4491-82b3-d50542397918",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "solid",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "0"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-f625c0b4-30cc-4d41-a1ba-6faafb8dc6bf",
-          "sourceHandle": "right-source",
-          "target": "card-781d5851-2a78-462c-85c0-c82b1d89b7a7",
-          "targetHandle": "left-target",
-          "id": "edge-1889a635-009d-457e-afa0-561568149902",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-1969f4be-e1f4-4bc8-9a07-0b1479f5cff9",
-          "sourceHandle": "left-target",
-          "target": "card-afa6ced8-d6fe-4bdf-919a-4be1ef56d2bb",
-          "targetHandle": "bottom-target",
-          "id": "edge-9dd3973b-9c71-4691-a0cc-a8d184218ac2",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-afa6ced8-d6fe-4bdf-919a-4be1ef56d2bb",
-          "sourceHandle": "right-source",
-          "target": "card-1969f4be-e1f4-4bc8-9a07-0b1479f5cff9",
-          "targetHandle": "left-target",
-          "id": "edge-2f19ccf5-6684-41e3-89f1-edafa4181b5c",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-1969f4be-e1f4-4bc8-9a07-0b1479f5cff9",
-          "sourceHandle": "right-source",
-          "target": "card-08cbfbf6-a3d0-45ce-abb5-351d378ba14c",
-          "targetHandle": "left-target",
-          "id": "edge-a046c6a7-3557-44e3-8825-91928fa69893",
-          "data": {
-            "color": "#eab308",
-            "lineStyle": "dotted",
-            "strokeWidth": 3
-          },
-          "style": {
-            "stroke": "#eab308",
-            "strokeWidth": 3,
-            "strokeDasharray": "2 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-4efe176e-9c29-4add-a9aa-d3dd28ee49f3",
-          "sourceHandle": "left-source",
-          "target": "card-4a593d94-641b-4c3b-ad46-b3961a8cc8ea",
-          "targetHandle": "right-source",
-          "id": "edge-abb96383-a2da-4b30-9f8e-56a2bbbc124c",
-          "data": {
-            "color": "#888888",
-            "lineStyle": "dashed",
-            "strokeWidth": 2
-          },
-          "style": {
-            "stroke": "#888888",
-            "strokeWidth": 2,
-            "strokeDasharray": "8 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-4efe176e-9c29-4add-a9aa-d3dd28ee49f3",
-          "sourceHandle": "left-source",
-          "target": "card-f625c0b4-30cc-4d41-a1ba-6faafb8dc6bf",
-          "targetHandle": "left-target",
-          "id": "edge-f3e2d4cc-c520-4c11-9d2f-64fbf2038592",
-          "data": {
-            "color": "#888888",
-            "lineStyle": "dashed",
-            "strokeWidth": 2
-          },
-          "style": {
-            "stroke": "#888888",
-            "strokeWidth": 2,
-            "strokeDasharray": "8 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-4efe176e-9c29-4add-a9aa-d3dd28ee49f3",
-          "sourceHandle": "left-target",
-          "target": "card-553ec3e6-e218-44bb-b21f-ea669d47914a",
-          "targetHandle": "right-target",
-          "id": "edge-2d1d31bc-006b-484b-83de-b80bff39a640",
-          "data": {
-            "color": "#22c55e",
-            "lineStyle": "dashed",
-            "strokeWidth": 2
-          },
-          "style": {
-            "stroke": "#22c55e",
-            "strokeWidth": 2,
-            "strokeDasharray": "8 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-4efe176e-9c29-4add-a9aa-d3dd28ee49f3",
-          "sourceHandle": "left-source",
-          "target": "card-553ec3e6-e218-44bb-b21f-ea669d47914a",
-          "targetHandle": "right-target",
-          "id": "edge-24c0fbf4-6136-478c-b7fd-734051dc5d9a",
-          "data": {
-            "color": "#22c55e",
-            "lineStyle": "dashed",
-            "strokeWidth": 2
-          },
-          "style": {
-            "stroke": "#22c55e",
-            "strokeWidth": 2,
-            "strokeDasharray": "8 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-f625c0b4-30cc-4d41-a1ba-6faafb8dc6bf",
-          "sourceHandle": "bottom-target",
-          "target": "card-4a593d94-641b-4c3b-ad46-b3961a8cc8ea",
-          "targetHandle": "right-target",
-          "id": "edge-8da3ade4-84af-4cb6-8bf8-7c6e0f948133",
-          "data": {
-            "color": "#22c55e",
-            "lineStyle": "dashed",
-            "strokeWidth": 2
-          },
-          "style": {
-            "stroke": "#22c55e",
-            "strokeWidth": 2,
-            "strokeDasharray": "8 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-f625c0b4-30cc-4d41-a1ba-6faafb8dc6bf",
-          "sourceHandle": "bottom-source",
-          "target": "card-4a593d94-641b-4c3b-ad46-b3961a8cc8ea",
-          "targetHandle": "right-target",
-          "id": "edge-e13bb7f9-eadf-4a1e-8cb6-f01512061839",
-          "data": {
-            "color": "#22c55e",
-            "lineStyle": "dashed",
-            "strokeWidth": 2
-          },
-          "style": {
-            "stroke": "#22c55e",
-            "strokeWidth": 2,
-            "strokeDasharray": "8 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-41f6e3b8-3cde-405f-9e9e-15a042bd126f",
-          "sourceHandle": "right-source",
-          "target": "card-f625c0b4-30cc-4d41-a1ba-6faafb8dc6bf",
-          "targetHandle": "left-target",
-          "id": "edge-5639d26b-f389-4f7f-b6d9-a256486ba52b",
-          "data": {
-            "color": "#22c55e",
-            "lineStyle": "dashed",
-            "strokeWidth": 2
-          },
-          "style": {
-            "stroke": "#22c55e",
-            "strokeWidth": 2,
-            "strokeDasharray": "8 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-553ec3e6-e218-44bb-b21f-ea669d47914a",
-          "sourceHandle": "left-target",
-          "target": "card-74658813-f4fa-4cff-b27f-1f95cb196dc0",
-          "targetHandle": "right-target",
-          "id": "edge-ef8435ce-f44b-483e-9439-cd8e7cc27408",
-          "data": {
-            "color": "#22c55e",
-            "lineStyle": "dashed",
-            "strokeWidth": 2
-          },
-          "style": {
-            "stroke": "#22c55e",
-            "strokeWidth": 2,
-            "strokeDasharray": "8 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-553ec3e6-e218-44bb-b21f-ea669d47914a",
-          "sourceHandle": "left-source",
-          "target": "card-74658813-f4fa-4cff-b27f-1f95cb196dc0",
-          "targetHandle": "right-target",
-          "id": "edge-1793bee4-c48b-4c51-9457-66b1ebc6e16b",
-          "data": {
-            "color": "#22c55e",
-            "lineStyle": "dashed",
-            "strokeWidth": 2
-          },
-          "style": {
-            "stroke": "#22c55e",
-            "strokeWidth": 2,
-            "strokeDasharray": "8 4"
-          }
-        },
-        {
-          "type": "rope",
-          "animated": false,
-          "source": "card-08cbfbf6-a3d0-45ce-abb5-351d378ba14c",
-          "sourceHandle": "left-source",
-          "target": "card-4a593d94-641b-4c3b-ad46-b3961a8cc8ea",
-          "targetHandle": "right-source",
-          "id": "edge-92a27f89-8620-4463-936e-5d7fdc9f4c3e",
-          "data": {
-            "color": "#22c55e",
-            "lineStyle": "dashed",
-            "strokeWidth": 2
-          },
-          "style": {
-            "stroke": "#22c55e",
-            "strokeWidth": 2,
             "strokeDasharray": "8 4"
           }
         }
       ],
       "viewport": {
-        "x": -423.7709748801128,
-        "y": -96.48283215936209,
-        "zoom": 0.16042823719536262
+        "x": 345.1870838842036,
+        "y": -24.592435719873947,
+        "zoom": 0.3071771606030472
       }
     }
   ],
-  "activeInvestigationId": "9f4aa4dc-d0bf-484e-8643-6142490b9c0f",
+  "activeInvestigationId": "ccc2eefb-1dab-4cf9-9410-1c22e40d5bbf",
   "aiApiKey": "",
   "aiProvider": "openai",
-  "llmBaseUrl": "http://localhost:11434",
-  "llmModel": "llama3",
   "aiChatHistory": [],
-  "showDots": false,
-  "createdAt": "2026-03-27T08:30:44.517Z",
-  "updatedAt": "2026-03-27T08:30:44.517Z"
+  "showDots": true,
+  "createdAt": "2026-03-26T10:12:14.470Z",
+  "updatedAt": "2026-03-26T10:12:14.470Z"
 }

@@ -9,7 +9,6 @@ import { useWorkspaceStore } from '../store/useWorkspaceStore';
 import { MiplerCardNode } from './MiplerCardNode';
 import { RopeEdge } from './edges/RopeEdge';
 import { ApiWorkspace } from './ApiWorkspace';
-import { AiPanel } from './AiPanel';
 import type { CardType } from '../types';
 
 const SNAP_RADIUS = 100; // Increased for easier connections
@@ -17,8 +16,7 @@ const SNAP_RADIUS = 100; // Increased for easier connections
 const Inner: React.FC = () => {
   const {
     nodes, edges, onNodesChange, onEdgesChange, onConnect,
-    setViewport, setEdgeStyleModalOpen, showDots, undo,
-    aiPanelOpen, apiWorkspaceOpen,
+    setViewport, setEdgeStyleModalOpen, showDots, undo, apiWorkspaceOpen,
   } = useWorkspaceStore();
 
   const rf = useReactFlow();
@@ -106,7 +104,7 @@ const Inner: React.FC = () => {
     useWorkspaceStore.getState().addCard(type as CardType, pos);
   }, [rf]);
 
-  const rightPanelWidth = (aiPanelOpen ? 340 : 0) + (apiWorkspaceOpen ? 480 : 0);
+  const rightPanelWidth = (apiWorkspaceOpen ? 480 : 0);
 
   return (
     <div style={{ position: 'absolute', inset: 0, display: 'flex' }}>
@@ -145,7 +143,7 @@ const Inner: React.FC = () => {
           )}
           <Controls showInteractive={false} position="bottom-left"
             style={{ marginBottom: 10, marginLeft: 10 }} />
-          {!apiWorkspaceOpen && !aiPanelOpen && (
+          {!apiWorkspaceOpen && (
             <MiniMap position="bottom-right" nodeColor={() => '#2a2a2a'}
               maskColor="rgba(0,0,0,0.7)"
               style={{ width: 140, height: 100, marginBottom: 10, marginRight: 10,
@@ -154,10 +152,9 @@ const Inner: React.FC = () => {
         </ReactFlow>
       </div>
 
-      {(apiWorkspaceOpen || aiPanelOpen) && (
+      {apiWorkspaceOpen && (
         <div style={{ display: 'flex', width: rightPanelWidth, transition: 'width 0.2s', overflow: 'hidden', flexShrink: 0 }}>
           {apiWorkspaceOpen && <ApiWorkspace />}
-          {aiPanelOpen && <AiPanel />}
         </div>
       )}
     </div>

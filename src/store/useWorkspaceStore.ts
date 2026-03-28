@@ -20,27 +20,24 @@ import type {
   AiMessage,
 } from '../types';
 
-// ── History for undo ──
 interface HistoryEntry {
   nodes: MiplerNode[];
   edges: MiplerEdge[];
 }
 
 interface WorkspaceStore {
-  // Multi-investigation
+  // Multi-investigation — two completely separate workspaces
   investigations: Investigation[];
   activeInvestigationId: string;
 
-  // Current canvas (derived from active investigation)
   nodes: MiplerNode[];
   edges: MiplerEdge[];
   viewport: { x: number; y: number; zoom: number };
 
-  // Undo stack
   history: HistoryEntry[];
   historyIndex: number;
 
-  // UI toggles
+  // UI
   showDots: boolean;
   exportModalOpen: boolean;
   importModalOpen: boolean;
@@ -52,21 +49,17 @@ interface WorkspaceStore {
   investigationMenuOpen: boolean;
   apiWorkspaceOpen: boolean;
 
-  // Edge defaults
   defaultEdgeColor: string;
   defaultLineStyle: LineStyle;
   defaultStrokeWidth: number;
 
-  // AI
-  aiApiKey: string;
+  // Ollama config only
   llmBaseUrl: string;
   llmModel: string;
-  aiProvider: string;
   aiChatHistory: AiMessage[];
 
   lastModified: number;
 
-  // Node/Edge ops
   setNodes: (nodes: MiplerNode[]) => void;
   setEdges: (edges: MiplerEdge[]) => void;
   onNodesChange: (changes: NodeChange[]) => void;
@@ -74,23 +67,19 @@ interface WorkspaceStore {
   onConnect: (connection: Connection) => void;
   setViewport: (vp: { x: number; y: number; zoom: number }) => void;
 
-  // Card ops
   addCard: (type: CardType, position?: { x: number; y: number }, extra?: Partial<CardData>) => string;
   updateCard: (id: string, data: Partial<CardData>) => void;
   removeCard: (id: string) => void;
   setCardColor: (id: string, color: string) => void;
 
-  // Edge style
   updateEdgeStyle: (id: string, data: Partial<EdgeData>) => void;
   setDefaultEdgeColor: (c: string) => void;
   setDefaultLineStyle: (s: LineStyle) => void;
   setDefaultStrokeWidth: (w: number) => void;
 
-  // Undo
   pushHistory: () => void;
   undo: () => void;
 
-  // Modal toggles
   setExportModalOpen: (o: boolean) => void;
   setImportModalOpen: (o: boolean) => void;
   setCustomUrlModalOpen: (o: boolean) => void;
@@ -101,74 +90,43 @@ interface WorkspaceStore {
   setApiWorkspaceOpen: (o: boolean) => void;
   setShowDots: (o: boolean) => void;
 
-  // AI
-  setAiApiKey: (key: string) => void;
-  setAiProvider: (p: string) => void;
   setLlmBaseUrl: (u: string) => void;
   setLlmModel: (m: string) => void;
   addAiMessage: (msg: AiMessage) => void;
   clearAiChat: () => void;
 
-  // Investigation management
   addInvestigation: () => string;
   removeInvestigation: (id: string) => void;
   switchInvestigation: (id: string) => void;
   renameInvestigation: (id: string, name: string) => void;
-  combineInvestigations: () => void;
   getActiveInvestigation: () => Investigation;
   syncActiveInvestigation: () => void;
 
-  // Serialization
   getWorkspaceState: () => WorkspaceState;
   loadWorkspaceState: (state: WorkspaceState) => void;
-  importWorkspaceAsNew: (state: WorkspaceState) => void;
   clearWorkspace: () => void;
 }
 
 function getDefaultTitle(type: CardType): string {
   const t: Record<CardType, string> = {
-    note: 'Note',
-    image: 'Image',
-    gif: 'GIF',
-    video: 'Video',
-    pdf: 'Document',
-    whois: 'WHOIS Lookup',
-    dns: 'DNS Lookup',
-    'reverse-image': 'Reverse Image Search',
-    'osint-framework': 'OSINT Framework',
-    'custom-url': 'Web Tool',
+    note: 'Note', image: 'Image', pdf: 'Document', whois: 'WHOIS Lookup',
+    dns: 'DNS Lookup', 'reverse-image': 'Reverse Image Search',
+    'osint-framework': 'OSINT Framework', 'custom-url': 'Web Tool',
   };
   return t[type] || 'Card';
 }
 
 function getDefaultWidth(type: CardType): number {
   const w: Record<CardType, number> = {
-    note: 300,
-    image: 320,
-    gif: 320,
-    video: 400,
-    pdf: 360,
-    whois: 360,
-    dns: 360,
-    'reverse-image': 440,
-    'osint-framework': 440,
-    'custom-url': 440,
+    note: 300, image: 320, pdf: 360, whois: 360, dns: 360,
+    'reverse-image': 440, 'osint-framework': 440, 'custom-url': 440,
   };
   return w[type] || 300;
 }
 
 const makeCardData = (type: CardType, extra?: Partial<CardData>): CardData => {
   const now = new Date().toISOString();
-  return {
-    cardType: type,
-    title: getDefaultTitle(type),
-    content: '',
-    width: getDefaultWidth(type),
-    cardColor: '#1e1e1e',
-    createdAt: now,
-    updatedAt: now,
-    ...extra,
-  };
+  return { cardType: type, title: getDefaultTitle(type), content: '', width: getDefaultWidth(type), cardColor: '#1e1e1e', createdAt: now, updatedAt: now, ...extra };
 };
 
 function createInvestigation(name?: string): Investigation {
@@ -183,44 +141,13 @@ function createInvestigation(name?: string): Investigation {
 
 const dashMap: Record<LineStyle, string> = { dashed: '8 4', dotted: '2 4', solid: '0' };
 
-// ── Helper to regenerate all IDs in an investigation ──
-function regenerateIds(inv: Investigation): Investigation {
-  const nodeIdMap: Record<string, string> = {};
-
-  // Generate new IDs for all nodes
-  const newNodes: MiplerNode[] = inv.nodes.map((node) => {
-    const newId = `card-${uuidv4()}`;
-    nodeIdMap[node.id] = newId;
-    return {
-      ...node,
-      id: newId,
-    };
-  });
-
-  // Generate new IDs for all edges and update source/target references
-  const newEdges: MiplerEdge[] = inv.edges.map((edge) => {
-    const newId = `edge-${uuidv4()}`;
-    return {
-      ...edge,
-      id: newId,
-      source: nodeIdMap[edge.source] || edge.source,
-      target: nodeIdMap[edge.target] || edge.target,
-    };
-  });
-
-  return {
-    ...inv,
-    id: uuidv4(),
-    nodes: newNodes,
-    edges: newEdges,
-  };
-}
-
-const firstInv = createInvestigation();
+// Two separate investigations by default — each is its own workspace
+const inv1 = createInvestigation('Workspace A');
+const inv2 = createInvestigation('Workspace B');
 
 export const useWorkspaceStore = create<WorkspaceStore>((set, get) => ({
-  investigations: [firstInv],
-  activeInvestigationId: firstInv.id,
+  investigations: [inv1, inv2],
+  activeInvestigationId: inv1.id,
   nodes: [],
   edges: [],
   viewport: { x: 0, y: 0, zoom: 1 },
@@ -243,15 +170,12 @@ export const useWorkspaceStore = create<WorkspaceStore>((set, get) => ({
   defaultLineStyle: 'dashed',
   defaultStrokeWidth: 2,
 
-  aiApiKey: '',
   llmBaseUrl: 'http://localhost:11434',
   llmModel: 'llama3',
-  aiProvider: 'openai',
   aiChatHistory: [],
 
   lastModified: Date.now(),
 
-  // ── Sync helpers ──
   syncActiveInvestigation: () => {
     const s = get();
     set({
@@ -268,7 +192,6 @@ export const useWorkspaceStore = create<WorkspaceStore>((set, get) => ({
     return s.investigations.find((i) => i.id === s.activeInvestigationId) || s.investigations[0];
   },
 
-  // ── History ──
   pushHistory: () => {
     const s = get();
     const entry: HistoryEntry = {
@@ -311,27 +234,12 @@ export const useWorkspaceStore = create<WorkspaceStore>((set, get) => ({
   onConnect: (connection) => {
     const s = get();
     s.pushHistory();
-    const edgeData: EdgeData = {
-      color: s.defaultEdgeColor,
-      lineStyle: s.defaultLineStyle,
-      strokeWidth: s.defaultStrokeWidth,
-    };
+    const edgeData: EdgeData = { color: s.defaultEdgeColor, lineStyle: s.defaultLineStyle, strokeWidth: s.defaultStrokeWidth };
     set((state) => ({
-      edges: addEdge(
-        {
-          ...connection,
-          id: `edge-${uuidv4()}`,
-          type: 'rope',
-          animated: false,
-          data: edgeData,
-          style: {
-            stroke: edgeData.color,
-            strokeWidth: edgeData.strokeWidth,
-            strokeDasharray: dashMap[edgeData.lineStyle],
-          },
-        },
-        state.edges
-      ) as MiplerEdge[],
+      edges: addEdge({
+        ...connection, id: `edge-${uuidv4()}`, type: 'rope', animated: false, data: edgeData,
+        style: { stroke: edgeData.color, strokeWidth: edgeData.strokeWidth, strokeDasharray: dashMap[edgeData.lineStyle] },
+      }, state.edges) as MiplerEdge[],
       lastModified: Date.now(),
     }));
     get().syncActiveInvestigation();
@@ -346,27 +254,8 @@ export const useWorkspaceStore = create<WorkspaceStore>((set, get) => ({
     const s = get();
     s.pushHistory();
     const id = `card-${uuidv4()}`;
-
-    // Calculate center of viewport if no position provided
-    let pos = position;
-    if (!pos) {
-      const { x, y, zoom } = s.viewport;
-      // Calculate viewport center in flow coordinates
-      const centerX = (-x + 600) / zoom;
-      const centerY = (-y + 400) / zoom;
-      // Add small random offset to avoid stacking
-      pos = {
-        x: centerX + (Math.random() - 0.5) * 100,
-        y: centerY + (Math.random() - 0.5) * 80,
-      };
-    }
-
-    const node: MiplerNode = {
-      id,
-      type: 'miplerCard',
-      position: pos,
-      data: makeCardData(type, extra),
-    };
+    const pos = position || { x: 150 + Math.random() * 300, y: 150 + Math.random() * 200 };
+    const node: MiplerNode = { id, type: 'miplerCard', position: pos, data: makeCardData(type, extra) };
     set((state) => ({ nodes: [...state.nodes, node], lastModified: Date.now() }));
     get().syncActiveInvestigation();
     return id;
@@ -374,9 +263,7 @@ export const useWorkspaceStore = create<WorkspaceStore>((set, get) => ({
 
   updateCard: (id, data) => {
     set((s) => ({
-      nodes: s.nodes.map((n) =>
-        n.id === id ? { ...n, data: { ...n.data, ...data, updatedAt: new Date().toISOString() } } : n
-      ),
+      nodes: s.nodes.map((n) => n.id === id ? { ...n, data: { ...n.data, ...data, updatedAt: new Date().toISOString() } } : n),
       lastModified: Date.now(),
     }));
     get().syncActiveInvestigation();
@@ -394,7 +281,7 @@ export const useWorkspaceStore = create<WorkspaceStore>((set, get) => ({
 
   setCardColor: (id, color) => {
     set((s) => ({
-      nodes: s.nodes.map((n) => (n.id === id ? { ...n, data: { ...n.data, cardColor: color } } : n)),
+      nodes: s.nodes.map((n) => n.id === id ? { ...n, data: { ...n.data, cardColor: color } } : n),
       lastModified: Date.now(),
     }));
     get().syncActiveInvestigation();
@@ -404,19 +291,8 @@ export const useWorkspaceStore = create<WorkspaceStore>((set, get) => ({
     set((s) => ({
       edges: s.edges.map((e) => {
         if (e.id !== id) return e;
-        const merged = {
-          ...(e.data || { color: '#888', lineStyle: 'dashed' as LineStyle, strokeWidth: 2 }),
-          ...data,
-        };
-        return {
-          ...e,
-          data: merged,
-          style: {
-            stroke: merged.color,
-            strokeWidth: merged.strokeWidth,
-            strokeDasharray: dashMap[merged.lineStyle],
-          },
-        };
+        const merged = { ...(e.data || { color: '#888', lineStyle: 'dashed' as LineStyle, strokeWidth: 2 }), ...data };
+        return { ...e, data: merged, style: { stroke: merged.color, strokeWidth: merged.strokeWidth, strokeDasharray: dashMap[merged.lineStyle] } };
       }) as MiplerEdge[],
       lastModified: Date.now(),
     }));
@@ -437,14 +313,11 @@ export const useWorkspaceStore = create<WorkspaceStore>((set, get) => ({
   setApiWorkspaceOpen: (o) => set({ apiWorkspaceOpen: o }),
   setShowDots: (o) => set({ showDots: o }),
 
-  setAiApiKey: (key) => set({ aiApiKey: key }),
-  setAiProvider: (p) => set({ aiProvider: p }),
   setLlmBaseUrl: (u) => set({ llmBaseUrl: u }),
   setLlmModel: (m) => set({ llmModel: m }),
   addAiMessage: (msg) => set((s) => ({ aiChatHistory: [...s.aiChatHistory, msg] })),
   clearAiChat: () => set({ aiChatHistory: [] }),
 
-  // ── Investigation management ──
   addInvestigation: () => {
     const s = get();
     s.syncActiveInvestigation();
@@ -465,10 +338,9 @@ export const useWorkspaceStore = create<WorkspaceStore>((set, get) => ({
     const s = get();
     if (s.investigations.length <= 1) return;
     const remaining = s.investigations.filter((i) => i.id !== id);
-    const newActive =
-      id === s.activeInvestigationId
-        ? remaining[0]
-        : s.investigations.find((i) => i.id === s.activeInvestigationId) || remaining[0];
+    const newActive = id === s.activeInvestigationId
+      ? remaining[0]
+      : s.investigations.find((i) => i.id === s.activeInvestigationId) || remaining[0];
     set({
       investigations: remaining,
       activeInvestigationId: newActive.id,
@@ -497,90 +369,8 @@ export const useWorkspaceStore = create<WorkspaceStore>((set, get) => ({
 
   renameInvestigation: (id, name) => {
     set((s) => ({
-      investigations: s.investigations.map((i) => (i.id === id ? { ...i, name } : i)),
+      investigations: s.investigations.map((i) => i.id === id ? { ...i, name } : i),
     }));
-  },
-
-  combineInvestigations: () => {
-    const s = get();
-    s.syncActiveInvestigation();
-    if (s.investigations.length < 2) return;
-
-    const allNodes: MiplerNode[] = [];
-    const allEdges: MiplerEdge[] = [];
-    let offsetX = 0;
-    const SPACING = 500; // Gap between workspaces
-
-    for (let i = 0; i < s.investigations.length; i++) {
-      const inv = s.investigations[i];
-      const nodeIdMap: Record<string, string> = {};
-
-      // Calculate bounds of this investigation
-      let minX = Infinity;
-      let maxX = -Infinity;
-      for (const node of inv.nodes) {
-        minX = Math.min(minX, node.position.x);
-        maxX = Math.max(maxX, node.position.x + (node.data.width || 300));
-      }
-
-      // Handle empty investigations
-      if (minX === Infinity) minX = 0;
-      if (maxX === -Infinity) maxX = 0;
-
-      // Normalize: shift all nodes so minX becomes offsetX
-      const shiftX = offsetX - minX;
-
-      for (const node of inv.nodes) {
-        const newId = `card-${uuidv4()}`;
-        nodeIdMap[node.id] = newId;
-        allNodes.push({
-          ...node,
-          id: newId,
-          position: {
-            x: node.position.x + shiftX,
-            y: node.position.y,
-          },
-        });
-      }
-
-      for (const edge of inv.edges) {
-        allEdges.push({
-          ...edge,
-          id: `edge-${uuidv4()}`,
-          source: nodeIdMap[edge.source] || edge.source,
-          target: nodeIdMap[edge.target] || edge.target,
-        });
-      }
-
-      // Update offsetX for next investigation
-      const width = maxX - minX;
-      offsetX = offsetX + width + SPACING;
-    }
-
-    // Restore edge styles
-    for (const edge of allEdges) {
-      if (edge.data) {
-        edge.style = {
-          stroke: edge.data.color || '#888',
-          strokeWidth: edge.data.strokeWidth || 2,
-          strokeDasharray: dashMap[edge.data.lineStyle || 'dashed'],
-        };
-      }
-    }
-
-    const combined = createInvestigation('Combined Investigation');
-    combined.nodes = allNodes;
-    combined.edges = allEdges;
-
-    set({
-      investigations: [combined],
-      activeInvestigationId: combined.id,
-      nodes: allNodes,
-      edges: allEdges,
-      viewport: { x: 0, y: 0, zoom: 0.4 },
-      history: [],
-      historyIndex: -1,
-    });
   },
 
   getWorkspaceState: (): WorkspaceState => {
@@ -591,10 +381,6 @@ export const useWorkspaceStore = create<WorkspaceStore>((set, get) => ({
       name: 'Mipler Export',
       investigations: s.investigations,
       activeInvestigationId: s.activeInvestigationId,
-      aiApiKey: s.aiApiKey,
-      aiProvider: s.aiProvider,
-      llmBaseUrl: s.llmBaseUrl,
-      llmModel: s.llmModel,
       aiChatHistory: s.aiChatHistory,
       showDots: s.showDots,
       createdAt: new Date().toISOString(),
@@ -602,9 +388,7 @@ export const useWorkspaceStore = create<WorkspaceStore>((set, get) => ({
     };
   },
 
-  // ── Import and REPLACE entire workspace (regenerate all IDs) ──
   loadWorkspaceState: (ws) => {
-    // Handle legacy single-investigation format
     let investigations = ws.investigations;
     let activeId = ws.activeInvestigationId;
 
@@ -617,11 +401,7 @@ export const useWorkspaceStore = create<WorkspaceStore>((set, get) => ({
       activeId = inv.id;
     }
 
-    // Regenerate ALL IDs so each import is unique
-    const regeneratedInvestigations = investigations.map((inv) => regenerateIds(inv));
-
-    // Restore edge styles
-    for (const inv of regeneratedInvestigations) {
+    for (const inv of investigations) {
       for (const edge of inv.edges) {
         if (edge.data) {
           edge.style = {
@@ -633,18 +413,16 @@ export const useWorkspaceStore = create<WorkspaceStore>((set, get) => ({
       }
     }
 
-    const active = regeneratedInvestigations[0];
+    const active = investigations.find((i) => i.id === activeId) || investigations[0];
 
     set({
-      investigations: regeneratedInvestigations,
+      investigations,
       activeInvestigationId: active.id,
       nodes: active.nodes,
       edges: active.edges,
       viewport: active.viewport,
-      aiApiKey: ws.aiApiKey || '',
-      aiProvider: ws.aiProvider || 'openai',
-      llmBaseUrl: ws.llmBaseUrl || 'http://localhost:11434',
-      llmModel: ws.llmModel || 'llama3',
+      llmBaseUrl: (ws as any).llmBaseUrl || 'http://localhost:11434',
+      llmModel: (ws as any).llmModel || 'llama3',
       aiChatHistory: ws.aiChatHistory || [],
       showDots: ws.showDots !== undefined ? ws.showDots : true,
       history: [],
@@ -653,65 +431,168 @@ export const useWorkspaceStore = create<WorkspaceStore>((set, get) => ({
     });
   },
 
-  // ── Import as NEW investigation (adds to existing workspace) ──
-  importWorkspaceAsNew: (ws) => {
-    const s = get();
-    s.syncActiveInvestigation();
-
-    // Handle legacy single-investigation format
-    let investigations = ws.investigations;
-
-    if (!investigations || investigations.length === 0) {
-      const inv = createInvestigation(ws.name || 'Imported');
-      inv.nodes = ws.nodes || [];
-      inv.edges = ws.edges || [];
-      inv.viewport = ws.viewport || { x: 0, y: 0, zoom: 1 };
-      investigations = [inv];
-    }
-
-    // Regenerate ALL IDs so each import is unique
-    const regeneratedInvestigations = investigations.map((inv) => regenerateIds(inv));
-
-    // Restore edge styles
-    for (const inv of regeneratedInvestigations) {
-      for (const edge of inv.edges) {
-        if (edge.data) {
-          edge.style = {
-            stroke: edge.data.color || '#888',
-            strokeWidth: edge.data.strokeWidth || 2,
-            strokeDasharray: dashMap[edge.data.lineStyle || 'dashed'],
-          };
-        }
-      }
-    }
-
-    const newInvestigations = [...s.investigations, ...regeneratedInvestigations];
-    const newActive = regeneratedInvestigations[0];
-
-    set({
-      investigations: newInvestigations,
-      activeInvestigationId: newActive.id,
-      nodes: newActive.nodes,
-      edges: newActive.edges,
-      viewport: newActive.viewport,
-      history: [],
-      historyIndex: -1,
-      lastModified: Date.now(),
-    });
-  },
-
   clearWorkspace: () => {
-    const inv = createInvestigation();
+    // Only clear the ACTIVE workspace — do not touch the other
+    const s = get();
+    const clearedInv: Investigation = {
+      ...s.getActiveInvestigation(),
+      nodes: [],
+      edges: [],
+      viewport: { x: 0, y: 0, zoom: 1 },
+    };
     set({
-      investigations: [inv],
-      activeInvestigationId: inv.id,
+      investigations: s.investigations.map(i =>
+        i.id === s.activeInvestigationId ? clearedInv : i
+      ),
       nodes: [],
       edges: [],
       viewport: { x: 0, y: 0, zoom: 1 },
       history: [],
       historyIndex: -1,
-      aiChatHistory: [],
       lastModified: Date.now(),
     });
   },
 }));
+
+// ── Mindmap → Canvas ──────────────────────────────────────────────────────────
+// Exported standalone so FileAnalysisPanel can call it directly without
+// going through the store interface (keeps the store interface lean).
+import type { MindmapNode as MMNode, MindmapResult } from '../types';
+
+const DASH_MAP_LOCAL: Record<string, string> = { dashed: '8 4', dotted: '2 4', solid: '0' };
+
+function buildCardNode(
+  id: string,
+  position: { x: number; y: number },
+  title: string,
+  content: string,
+  cardColor: string,
+): import('../types').MiplerNode {
+  const now = new Date().toISOString();
+  return {
+    id,
+    type: 'miplerCard',
+    position,
+    data: {
+      cardType: 'note',
+      title,
+      content,
+      width: 280,
+      cardColor,
+      createdAt: now,
+      updatedAt: now,
+    },
+  };
+}
+
+function buildEdge(
+  source: string,
+  target: string,
+  color = '#3b82f6',
+): import('../types').MiplerEdge {
+  return {
+    id: `edge-${uuidv4()}`,
+    source,
+    target,
+    sourceHandle: 'bottom-source',
+    targetHandle: 'top-target',
+    type: 'rope',
+    animated: false,
+    data: { color, lineStyle: 'dashed' as import('../types').LineStyle, strokeWidth: 2 },
+    style: { stroke: color, strokeWidth: 2, strokeDasharray: DASH_MAP_LOCAL['dashed'] },
+  };
+}
+
+/**
+ * Spawns a full mindmap + answer onto the active canvas.
+ * Layout:
+ *   - Answer card at top-centre (wide, coloured green)
+ *   - Level-1 nodes fanned out below it  → each connected to Answer
+ *   - Level-2 nodes below each L1 node   → each connected to their L1 parent
+ *   - (deeper levels continue downward)
+ * Every edge ultimately traces back to the Answer card so the whole map
+ * radiates from that single card.
+ */
+export function spawnMindmapOnCanvas(result: MindmapResult): void {
+  const store = useWorkspaceStore.getState();
+  const existingNodes = store.nodes;
+  const existingEdges = store.edges;
+
+  // Find a starting X/Y that doesn't overlap existing cards
+  const maxY = existingNodes.reduce((m, n) => Math.max(m, n.position.y + 200), 0);
+  const originX = 400;
+  const originY = maxY + 80;
+
+  const newNodes: import('../types').MiplerNode[] = [];
+  const newEdges: import('../types').MiplerEdge[] = [];
+
+  // ── Answer card (root) ────────────────────────────────────────────────────
+  const answerId = `mm-answer-${uuidv4()}`;
+  const answerNode = buildCardNode(
+    answerId,
+    { x: originX, y: originY },
+    `📋 ${result.mindmap.root}`,
+    result.answer,
+    '#0f2a1a', // dark green tint
+  );
+  // Make it wider to hold the answer text
+  answerNode.data.width = 420;
+  newNodes.push(answerNode);
+
+  // ── Recursively lay out nodes ─────────────────────────────────────────────
+  const LEVEL_GAP_Y = 200;   // vertical gap between levels
+  const NODE_GAP_X = 320;    // horizontal gap between siblings
+
+  function layoutLevel(
+    nodes: MMNode[],
+    parentId: string,
+    levelY: number,
+    centreX: number,
+    depth: number,
+  ) {
+    if (!nodes || nodes.length === 0) return;
+
+    const colors = ['#1a2a4a', '#1a3a2a', '#2a1a3a', '#3a2a1a', '#1a3a3a'];
+    const edgeColors = ['#3b82f6', '#22c55e', '#8b5cf6', '#f97316', '#06b6d4'];
+
+    const totalWidth = (nodes.length - 1) * NODE_GAP_X;
+    const startX = centreX - totalWidth / 2;
+
+    nodes.forEach((node, i) => {
+      const cardId = `mm-node-${node.id}-${uuidv4()}`;
+      const posX = startX + i * NODE_GAP_X;
+      const posY = levelY;
+
+      const color = colors[depth % colors.length];
+      const edgeColor = edgeColors[depth % edgeColors.length];
+
+      // Build descriptive content from children labels
+      const childSummary = node.children.length > 0
+        ? '\n\nSub-topics:\n' + node.children.map(c => `  • ${c.label}`).join('\n')
+        : '';
+
+      const cardNode = buildCardNode(
+        cardId,
+        { x: posX, y: posY },
+        node.label,
+        `${node.label}${childSummary}`,
+        color,
+      );
+      newNodes.push(cardNode);
+
+      // Edge from parent → this card (ALL ultimately trace back to Answer)
+      newEdges.push(buildEdge(parentId, cardId, edgeColor));
+
+      // Recurse into children — centred under this card
+      layoutLevel(node.children, cardId, posY + LEVEL_GAP_Y, posX, depth + 1);
+    });
+  }
+
+  layoutLevel(result.mindmap.nodes, answerId, originY + LEVEL_GAP_Y, originX + 210, 0);
+
+  // ── Commit to store ───────────────────────────────────────────────────────
+  store.pushHistory();
+  store.setNodes([...existingNodes, ...newNodes]);
+  store.setEdges([...existingEdges, ...newEdges]);
+  store.syncActiveInvestigation();
+}
