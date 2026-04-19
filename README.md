@@ -1,4 +1,4 @@
-# Mipler v3 — Swarm Investigation + Personal Assistant
+# Mipler — Swarm Investigation + Personal Assistant
 
 > A swarm-based investigation wall plus a persistent personal AI assistant.  
 > Local-first storage, encrypted provider keys, model-provider switching, and scheduled automation.
