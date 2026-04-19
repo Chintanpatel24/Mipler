@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
 
 @layer base {
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,14 +26,13 @@
 /* Connection line while dragging */
 .react-flow__connection-line { stroke: #888 !important; stroke-width: 1.5 !important; stroke-dasharray: 5 3; }
 
-/* ── Handles: base styles ── */
+/* Handles */
 .react-flow__handle {
   opacity: 1 !important;
   pointer-events: all !important;
   cursor: crosshair !important;
 }
 
-/* Source handles - visible dots */
 .react-flow__handle[data-handlepos="top"][data-handleid*="source"],
 .react-flow__handle[data-handlepos="bottom"][data-handleid*="source"],
 .react-flow__handle[data-handlepos="left"][data-handleid*="source"],
@@ -46,7 +45,6 @@
   box-shadow: none !important;
 }
 
-/* Target handles - larger invisible hit area */
 .react-flow__handle[data-handlepos="top"][data-handleid*="target"],
 .react-flow__handle[data-handlepos="bottom"][data-handleid*="target"],
 .react-flow__handle[data-handlepos="left"][data-handleid*="target"],
@@ -58,14 +56,12 @@
   box-shadow: none !important;
 }
 
-/* Subtle hover effect on source handles only - no glow */
 .react-flow__handle[data-handleid*="source"]:hover {
   background: #4a4a4a !important;
   border-color: #666 !important;
   box-shadow: none !important;
 }
 
-/* When connecting - highlight valid targets subtly */
 .react-flow__handle.connectingto,
 .react-flow__handle.valid {
   background: #4a4a4a !important;
@@ -73,7 +69,15 @@
   box-shadow: none !important;
 }
 
-/* N8n-style dot grid */
+/* Magnetic snap glow on handles */
+.react-flow__node.handle-attract .react-flow__handle[data-handleid*="target"] {
+  background: rgba(100, 100, 240, 0.3) !important;
+  border: 2px solid rgba(100, 100, 240, 0.6) !important;
+  box-shadow: 0 0 12px rgba(100, 100, 240, 0.4) !important;
+  transition: all 0.15s ease;
+}
+
+/* Dot grid */
 .react-flow__background pattern circle { fill: #2a2a2a !important; }
 
 .sandboxed-frame { border: none; border-radius: 4px; background: white; }
@@ -81,6 +85,8 @@
 
 @keyframes fadeIn { from { opacity: 0; transform: scale(0.97) translateY(-3px); } to { opacity: 1; transform: scale(1) translateY(0); } }
 .animate-fade-in { animation: fadeIn 0.12s ease-out; }
+
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
 .card-drag-handle { cursor: grab; }
 .card-drag-handle:active { cursor: grabbing; }
@@ -97,13 +103,57 @@
 .tb-btn.active { background: #1e1e1e; color: #e0e0e0; }
 .tb-sep { width: 1px; height: 20px; background: #222; margin: 0 2px; flex-shrink: 0; }
 
-/* VSCode editor */
-.api-workspace {
-  font-family: 'IBM Plex Mono', 'Courier New', monospace;
-  font-size: 13px; line-height: 1.6;
-  background: #1e1e1e; color: #d4d4d4;
-  border: none; outline: none; resize: none;
-  width: 100%; height: 100%; padding: 16px;
-  tab-size: 2;
+/* Agent workspace subtle glow on agent cards */
+.react-flow__node.agent-node {
+  box-shadow: 0 0 20px rgba(100, 100, 200, 0.08);
 }
-.api-workspace::selection { background: #264f78; }
+
+/* Status pulse for running/thinking agents */
+@keyframes agentPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.agent-status-running {
+  animation: agentPulse 1.5s ease-in-out infinite;
+}
+
+/* Agent workspace toolbar indicator */
+.tb-btn.agent-active {
+  color: #7a7af0 !important;
+  background: rgba(120, 120, 240, 0.08) !important;
+}
+
+/* Glowing rope animation */
+@keyframes ropeGlow {
+  0%, 100% { filter: drop-shadow(0 0 3px currentColor); }
+  50% { filter: drop-shadow(0 0 8px currentColor); }
+}
+
+/* AI generated card subtle border glow */
+.react-flow__node[data-type="miplerCard"] .mipler-card-wrapper {
+  transition: box-shadow 0.3s;
+}
+
+/* Data flow particle animation */
+@keyframes dataFlowPulse {
+  0% { r: 2; opacity: 0.3; }
+  50% { r: 4; opacity: 0.8; }
+  100% { r: 2; opacity: 0.3; }
+}
+
+/* Flowing current glow effect for active edges */
+@keyframes currentFlow {
+  0% { stroke-opacity: 0.6; filter: drop-shadow(0 0 2px currentColor); }
+  50% { stroke-opacity: 1; filter: drop-shadow(0 0 6px currentColor); }
+  100% { stroke-opacity: 0.6; filter: drop-shadow(0 0 2px currentColor); }
+}
+
+.react-flow__edge[data-active="true"] .react-flow__edge-path {
+  animation: currentFlow 1.5s ease-in-out infinite;
+}
+
+/* Import card drop zone highlight */
+@keyframes importPulse {
+  0%, 100% { border-color: #1a4a2a; }
+  50% { border-color: #2a6a3a; }
+}

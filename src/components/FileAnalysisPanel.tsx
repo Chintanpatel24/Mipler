@@ -1,10 +1,9 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { useWorkspaceStore } from '../store/useWorkspaceStore';
-import { analyzeFilesWithAi } from '../utils/aiApi';
+import { analyzeFilesWithAi, readFileForAnalysis } from '../utils/aiApi';
 import { spawnMindmapOnCanvas } from '../store/useWorkspaceStore';
 import { uploadJsonFile } from '../utils/fileSystem';
 import type { UploadedFile, MindmapNode, MindmapResult } from '../types';
-import { v4 as uuidv4 } from 'uuid';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Mini mindmap preview (collapsible tree — for the panel sidebar only)
@@ -48,6 +47,39 @@ const MiniNodeView: React.FC<{ node: MindmapNode; depth: number }> = ({ node, de
 function countNodes(nodes: MindmapNode[]): number {
   return nodes.reduce((acc, n) => acc + 1 + countNodes(n.children), 0);
 }
+
+function getMindmapDepth(nodes: MindmapNode[]): number {
+  if (nodes.length === 0) return 0;
+  return nodes.reduce((maxDepth, node) => Math.max(maxDepth, 1 + getMindmapDepth(node.children)), 0);
+}
+
+const InsightSection: React.FC<{ title: string; items: string[]; accent: string }> = ({ title, items, accent }) => {
+  if (items.length === 0) return null;
+
+  return (
+    <div>
+      <p style={{ fontSize: 9, color: '#555', marginBottom: 6, fontFamily: 'IBM Plex Mono', letterSpacing: '0.07em' }}>
+        {title.toUpperCase()}
+      </p>
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 4,
+        padding: '10px',
+        background: '#101010',
+        border: '1px solid #1e1e1e',
+        borderRadius: 6,
+      }}>
+        {items.map((item, index) => (
+          <div key={`${title}-${index}`} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+            <span style={{ color: accent, fontSize: 11, lineHeight: 1.5 }}>•</span>
+            <span style={{ fontSize: 11, color: '#b8b8b8', lineHeight: 1.6 }}>{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // File type badge label
@@ -102,37 +134,6 @@ export const FileAnalysisPanel: React.FC = () => {
   const step2Done = step1Done && question.trim().length > 0;
   const step3Done = !!result;
 
-  // ── Read a browser File into UploadedFile ────────────────────────────────
-  const readFile = (file: File): Promise<UploadedFile> => new Promise((resolve, reject) => {
-    const ext = file.name.split('.').pop()?.toLowerCase() || '';
-    const id = uuidv4();
-
-    const asText = (type: string) => {
-      const r = new FileReader();
-      r.onload = () => resolve({ id, name: file.name, type, data: r.result as string, size: file.size, uploadedAt: new Date().toISOString() });
-      r.onerror = () => reject(new Error(`Failed to read ${file.name}`));
-      r.readAsText(file);
-    };
-
-    if (ext === 'json') {
-      const r = new FileReader();
-      r.onload = () => {
-        try {
-          const data = JSON.parse(r.result as string);
-          resolve({ id, name: file.name, type: 'json', data, size: file.size, uploadedAt: new Date().toISOString() });
-        } catch {
-          reject(new Error(`${file.name} is not valid JSON`));
-        }
-      };
-      r.onerror = () => reject(new Error(`Failed to read ${file.name}`));
-      r.readAsText(file);
-    } else if (file.type.startsWith('image/')) {
-      resolve({ id, name: file.name, type: 'image', data: `[Image: ${file.name}, ${(file.size / 1024).toFixed(1)}KB]`, size: file.size, uploadedAt: new Date().toISOString() });
-    } else {
-      asText(ext || file.type.split('/')[1] || 'file');
-    }
-  });
-
   const addFiles = useCallback(async (incoming: FileList | null) => {
     if (!incoming) return;
     setError('');
@@ -140,8 +141,11 @@ export const FileAnalysisPanel: React.FC = () => {
     setSpawned(false);
     const added: UploadedFile[] = [];
     for (const file of Array.from(incoming)) {
-      try { added.push(await readFile(file)); }
-      catch (e: any) { setError(e.message); }
+      try {
+        added.push(await readFileForAnalysis(file));
+      } catch (e: unknown) {
+        setError(e instanceof Error ? e.message : String(e));
+      }
     }
     setFiles(prev => [...prev, ...added]);
   }, []);
@@ -193,12 +197,12 @@ export const FileAnalysisPanel: React.FC = () => {
     try {
       setLoadingStep('Sending files to Ollama…');
       const analysisFiles = files.map(f => ({ name: f.name, type: f.type, data: f.data }));
-      setLoadingStep('AI is reading & analysing…');
+      setLoadingStep('AI is reading evidence and tracing leads…');
       const res = await analyzeFilesWithAi(question, analysisFiles, llmBaseUrl, llmModel);
-      setLoadingStep('Building mindmap…');
+      setLoadingStep('Structuring the investigation map…');
       setResult(res);
-    } catch (e: any) {
-      setError(e.message);
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : String(e));
     }
 
     setLoading(false);
@@ -225,6 +229,19 @@ export const FileAnalysisPanel: React.FC = () => {
   };
 
   const nodeCount = result ? countNodes(result.mindmap.nodes) : 0;
+  const depthCount = result ? getMindmapDepth(result.mindmap.nodes) : 0;
+  const confidence = result?.confidence !== undefined ? `${Math.round(result.confidence * 100)}%` : 'n/a';
+  const leadItems = (result?.leads || []).map((lead) =>
+    `${lead.priority.toUpperCase()}: ${lead.title}${lead.detail ? ` — ${lead.detail}` : ''}`,
+  );
+  const entityItems = (result?.entities || []).map((entity) =>
+    `${entity.name}${entity.type ? ` (${entity.type})` : ''}${entity.relevance ? ` — ${entity.relevance}` : ''}`,
+  );
+  const riskItems = result?.risks || [];
+  const nextQuestionItems = result?.nextQuestions || [];
+  const timelineItems = (result?.timeline || []).map((event) =>
+    `${event.date ? `${event.date}: ` : ''}${event.detail}`,
+  );
 
   // ─────────────────────────────────────────────────────────────────────────
   return (
@@ -453,8 +470,9 @@ export const FileAnalysisPanel: React.FC = () => {
             }}>
               {[
                 { label: 'NODES', value: nodeCount },
-                { label: 'DEPTH', value: result.mindmap.nodes.length },
-                { label: 'WORDS', value: result.answer.split(/\s+/).length },
+                { label: 'DEPTH', value: depthCount },
+                { label: 'LEADS', value: leadItems.length },
+                { label: 'CONF', value: confidence },
               ].map(({ label, value }) => (
                 <div key={label} style={{ flex: 1, textAlign: 'center' }}>
                   <div style={{ fontSize: 14, fontWeight: 700, color: '#4a9a5a', fontFamily: 'IBM Plex Mono' }}>{value}</div>
@@ -462,6 +480,26 @@ export const FileAnalysisPanel: React.FC = () => {
                 </div>
               ))}
             </div>
+
+            {result.executiveSummary && (
+              <div>
+                <p style={{ fontSize: 9, color: '#555', marginBottom: 6, fontFamily: 'IBM Plex Mono', letterSpacing: '0.07em' }}>
+                  EXECUTIVE SUMMARY
+                </p>
+                <div style={{
+                  padding: '10px 12px',
+                  background: '#10151c',
+                  border: '1px solid #1a2d42',
+                  borderRadius: 6,
+                  fontSize: 11,
+                  color: '#afc4db',
+                  lineHeight: 1.7,
+                  whiteSpace: 'pre-wrap',
+                }}>
+                  {result.executiveSummary}
+                </div>
+              </div>
+            )}
 
             {/* Action buttons */}
             <div style={{ display: 'flex', gap: 6 }}>
@@ -492,6 +530,12 @@ export const FileAnalysisPanel: React.FC = () => {
               </button>
             </div>
 
+            <InsightSection title="Priority Leads" items={leadItems} accent="#5acc7a" />
+            <InsightSection title="Key Entities" items={entityItems} accent="#8b5cf6" />
+            <InsightSection title="Risks" items={riskItems} accent="#f97316" />
+            <InsightSection title="Next Questions" items={nextQuestionItems} accent="#06b6d4" />
+            <InsightSection title="Timeline" items={timelineItems} accent="#eab308" />
+
             {/* Canvas placement explanation */}
             {!spawned && (
               <div style={{
@@ -500,8 +544,8 @@ export const FileAnalysisPanel: React.FC = () => {
               }}>
                 <span style={{ color: '#3a6a5a' }}>How it works: </span>
                 A central <strong style={{ color: '#aaa' }}>Answer card</strong> is placed on the canvas with the full AI response.
-                Each mindmap topic becomes a <strong style={{ color: '#aaa' }}>Note card</strong> with its sub-topics listed inside.
-                All cards connect back to the Answer card via edges — giving you a complete, interactive investigation map.
+                Mipler also creates linked investigation cards for the executive summary, leads, entities, risks, timeline, and questions when they are available.
+                Each mindmap topic becomes its own connected node so you can keep expanding the case visually.
               </div>
             )}
 

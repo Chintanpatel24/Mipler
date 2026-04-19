@@ -6,11 +6,17 @@
   "license": "MIT",
   "author": "Mipler Contributors",
   "type": "module",
+  "bin": {
+    "mipler": "./bin/mipler.js",
+    "mipler-assistant": "./bin/mipler-assistant.js"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "node server.js",
+    "start": "node ./bin/mipler.js",
+    "assistant": "node ./bin/mipler-assistant.js",
+    "serve:static": "node server.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {

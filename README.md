@@ -1,76 +1,80 @@
-<div align=center>
-<img src=image/mipler.png>
-</div>
+# Mipler v3 — Swarm Investigation + Personal Assistant
 
-># Mipler - Local OSINT Investigation Wall
-
-> A fully **local**, **offline-first**, **Ollama-powered** OSINT investigation canvas.  
-> No API keys. No cloud. No data leaves your machine.
+> A swarm-based investigation wall plus a persistent personal AI assistant.  
+> Local-first storage, encrypted provider keys, model-provider switching, and scheduled automation.
 
 ---
 
->## What's New in v2
+## What's New in v3
 
 | Change | Details |
 |--------|---------|
-| **Ollama only** | OpenAI and Custom API options have been completely removed. The app uses [Ollama](https://ollama.com) exclusively — free, local, private. |
+| **Multi-provider LLM routing** | Switch between Ollama, OpenAI, Anthropic, or OpenRouter from Assistant Settings. |
+| **Persistent assistant memory** | Conversations, user profile facts, reusable skills, schedules, and reports are stored in local SQLite. |
+| **Self-improving skills** | Complex tasks can automatically generate reusable skills for future prompts. |
+| **Case-based questioning** | The assistant can analyze case studies, understand the scenario, and ask high-value clarifying questions. |
+| **Automated scheduling** | Create daily tasks (for example a daily report) with local execution and report history. |
+| **Gateway-ready endpoints** | Telegram/Discord message endpoints are available for cloud bot integration. |
 | **File Analysis Panel** | Upload any file type (JSON, CSV, TXT, PDF, images, etc.), ask a natural-language question, and get an AI answer **plus a downloadable mindmap JSON**. |
 | **Mindmap export** | After each file analysis, the AI generates a structured mindmap. Click **↓ JSON** to download it for external use or import into other tools. |
 | **Two separate workspaces** | "Workspace A" and "Workspace B" are completely independent canvases. Importing a JSON into one workspace does **not** affect the other. |
 | **Clear only active workspace** | "Clear Workspace" now only clears whichever workspace is currently active — the other is untouched. |
-| **`start.sh`** | One-command launcher: checks Node.js version, installs deps, builds if needed, checks Ollama, and starts the server bound to `localhost` only. |
+| **`mipler` launcher** | Cross-platform launcher: type `mipler` after installation and it starts the frontend plus the Python investigation backend when available. |
 | **Security** | Server is hardcoded to bind `127.0.0.1` — it cannot be reached from other machines on your network. |
 
 ---
 
->## Requirements
+## Requirements
 
 - **Node.js** v18 or higher — [nodejs.org](https://nodejs.org)
-- **Ollama** — [ollama.com](https://ollama.com)
-- A pulled Ollama model (e.g. `llama3`, `mistral`, `gemma2`)
+- **Ollama** for local-only use, or API keys for OpenAI / Anthropic / OpenRouter.
 
-No API keys. No internet connection required after initial model download.
+Cloud providers are optional. Local Ollama still works without external APIs.
 
 ---
 
->## Quick Start
+## Quick Start
 
 ```bash
 # 1. Clone or unzip Mipler
 cd mipler-main
 
-# 2. Start Ollama in a separate terminal (with CORS enabled)
-OLLAMA_ORIGINS=* ollama serve
+# 2. Install once
+npm install
 
-# 3. Pull a model (first time only)
-ollama pull llama3
+# 3. Optional: make the launcher global
+npm install -g .
 
 # 4. Start Mipler
-bash start.sh
+mipler
 ```
+
+If you do not want the global command, run `npm start` inside the project folder instead.
+
+On Windows, `npm install -g .` creates the `mipler.cmd` launcher automatically. For a local repo checkout you can also run `start.cmd`.
 
 Then open your browser at **http://localhost:3000**
 
 ---
 
->## What `start.sh` Does
+## What The Launcher Does
 
-The startup script handles everything automatically:
+The `mipler` launcher handles everything automatically:
 
 1. **Checks Node.js version** — exits with a clear message if below v18.
 2. **Installs dependencies** — runs `npm install` only if `node_modules` is missing.
-3. **Builds the app** — runs `npm run build` only if `dist/` is missing or source files are newer.
-4. **Checks Ollama** — warns (but does not block) if Ollama is not running. Lists available models.
-5. **Starts the server** — binds to `127.0.0.1:3000` (localhost only).
+3. **Builds the app** — runs `npm run build` when a rebuild is needed and build tooling is available.
+4. **Starts the Python backend** — launches `backend.api.server` automatically when Python + FastAPI are installed.
+5. **Starts the frontend server** — binds to `127.0.0.1:3000` (localhost only).
 
 To use a different port:
 ```bash
-PORT=8080 bash start.sh
+PORT=8080 mipler
 ```
 
 ---
 
->## Features
+## Features
 
 ### Investigation Canvases (Two Separate Workspaces)
 
@@ -137,13 +141,14 @@ Click **API** in the toolbar to open the Ollama chat workspace. This is a direct
 - **Chat tab** — send messages and get responses from Ollama.
 - **Settings tab** — configure the Ollama URL and select from available models (auto-detected).
 
-### Ollama Settings
+### Assistant Settings
 
-Click the **⋮ menu → Ollama Settings** to configure:
+Click the **⋮ menu → Assistant Settings** to configure:
 
-- **Base URL** — default `http://localhost:11434`
-- **Model** — default `llama3`; type any model name or choose from detected ones
-- **Test Connection** — verifies Ollama is reachable
+- **Provider** — `ollama`, `openai`, `anthropic`, or `openrouter`
+- **Base URL** — optional override per provider
+- **Model** — any model ID supported by the provider
+- **API key** — encrypted in backend local storage
 
 ### Export & Import
 
@@ -156,9 +161,10 @@ Click the **⋮ menu → Ollama Settings** to configure:
 ## Security
 
 - **Localhost only** — The server is bound to `127.0.0.1`. It cannot be accessed from other devices.
-- **No outbound network calls** — All AI requests go to your local Ollama instance. No data is sent to any cloud.
-- **No API keys stored** — The v2 app does not ask for or store any API keys.
-- **No persistent storage** — Workspace data lives in browser memory only. It is cleared when you close or refresh the tab. Use Export to save your work.
+- **Local-first storage** — Assistant memory, skills, schedules, and reports are stored locally in `data/assistant.db`.
+- **Encrypted provider keys** — API keys are encrypted locally (Fernet) and excluded from workspace exports.
+- **Factory reset** — Use **⋮ menu → Factory Reset (Fresh Start)** to clear browser data and assistant backend memory.
+- **Local browser persistence** — Workspace data is stored in local storage and autosaved. `Ctrl+S` or `Cmd+S` forces an immediate save.
 - **No telemetry** — Mipler does not collect, log, or transmit any usage data.
 
 ---
@@ -210,24 +216,15 @@ npm run dev
 # Build for production
 npm run build
 
-# Serve production build
+# Serve with the full launcher
 npm start
-# or
-bash start.sh
+# or install the global command and run:
+mipler
 ```
 
 ---
 
->## Example images
-
-<div align=center>
-<img src=image/test.png>
-<img src=image/t2.png>
-<img src=image/agent.png>
-</div>
----
-
->## Project Structure
+## Project Structure
 
 ```
 mipler-main/
@@ -244,7 +241,7 @@ mipler-main/
 │   │   ├── cards/                  # Individual card components
 │   │   ├── edges/                  # Edge components
 │   │   ├── modals/
-│   │   │   ├── ApiSettingsModal.tsx  # Ollama settings (renamed)
+│   │   │   ├── ApiSettingsModal.tsx  # Multi-provider assistant settings
 │   │   │   ├── ExportModal.tsx
 │   │   │   ├── ImportModal.tsx
 │   │   │   └── ...
@@ -262,11 +259,11 @@ mipler-main/
 
 ---
 
->## Troubleshooting
+## Troubleshooting
 
 **"Ollama not detected"**
 - Run `OLLAMA_ORIGINS=* ollama serve` in a terminal.
-- Make sure the URL in Ollama Settings matches where Ollama is running.
+- Make sure the URL in Assistant Settings matches where Ollama is running.
 
 **"Ollama error 404"**
 - The model you specified may not be pulled yet. Run `ollama pull llama3`.
@@ -280,3 +277,9 @@ mipler-main/
 
 **Port already in use**
 - Run `PORT=8080 bash start.sh`
+
+---
+
+## License
+
+MIT — see `LICENSE`

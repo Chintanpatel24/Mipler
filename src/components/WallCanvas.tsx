@@ -8,26 +8,30 @@ import 'reactflow/dist/style.css';
 import { useWorkspaceStore } from '../store/useWorkspaceStore';
 import { MiplerCardNode } from './MiplerCardNode';
 import { RopeEdge } from './edges/RopeEdge';
-import { ApiWorkspace } from './ApiWorkspace';
+import { AgentSidebar } from './AgentSidebar';
 import type { CardType } from '../types';
 
-const SNAP_RADIUS = 100; // Increased for easier connections
+const SNAP_RADIUS = 100;
 
 const Inner: React.FC = () => {
   const {
     nodes, edges, onNodesChange, onEdgesChange, onConnect,
-    setViewport, setEdgeStyleModalOpen, showDots, undo, apiWorkspaceOpen,
+    setViewport, setEdgeStyleModalOpen, showDots, undo,
+    agentSidebarOpen, setLastPointerPosition,
   } = useWorkspaceStore();
+
+  const activeInvestigationId = useWorkspaceStore(s => s.activeInvestigationId);
+  const investigations = useWorkspaceStore(s => s.investigations);
+  const activeInv = investigations.find(i => i.id === activeInvestigationId);
+  const isAiWorkspace = activeInv?.isAiAnalysis || false;
 
   const rf = useReactFlow();
   const nodeTypes: NodeTypes = useMemo(() => ({ miplerCard: MiplerCardNode }), []);
   const edgeTypes: EdgeTypes = useMemo(() => ({ rope: RopeEdge }), []);
 
-  // Track connecting state for magnetic snap
   const isConnecting = useRef(false);
   const connectSource = useRef<OnConnectStartParams | null>(null);
 
-  // Ctrl+Z undo
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === 'z') { e.preventDefault(); undo(); }
@@ -36,38 +40,32 @@ const Inner: React.FC = () => {
     return () => window.removeEventListener('keydown', handler);
   }, [undo]);
 
-  // ── Magnetic snap: while dragging a connection line, find the nearest
-  //    node and add a CSS class that makes its handles swell visibly ──
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!isConnecting.current) return;
+    const flowPos = rf.screenToFlowPosition({ x: e.clientX, y: e.clientY });
+    setLastPointerPosition(flowPos);
 
+    if (!isConnecting.current) return;
     const flowBounds = (e.currentTarget as HTMLElement).getBoundingClientRect();
     const mouseX = e.clientX - flowBounds.left;
     const mouseY = e.clientY - flowBounds.top;
 
-    // Get all node DOM elements and measure distance
     let closestNodeId: string | null = null;
     let closestDist = SNAP_RADIUS;
 
     for (const node of nodes) {
-      // Skip the source node
       if (node.id === connectSource.current?.nodeId) continue;
-
       const nodeEl = document.querySelector(`[data-id="${node.id}"]`) as HTMLElement | null;
       if (!nodeEl) continue;
-
       const rect = nodeEl.getBoundingClientRect();
       const nodeCx = rect.left - flowBounds.left + rect.width / 2;
       const nodeCy = rect.top - flowBounds.top + rect.height / 2;
       const dist = Math.hypot(mouseX - nodeCx, mouseY - nodeCy);
-
       if (dist < closestDist) {
         closestDist = dist;
         closestNodeId = node.id;
       }
     }
 
-    // Apply / remove attract class
     document.querySelectorAll('.react-flow__node.handle-attract').forEach((el) => {
       el.classList.remove('handle-attract');
     });
@@ -75,12 +73,11 @@ const Inner: React.FC = () => {
       const el = document.querySelector(`[data-id="${closestNodeId}"]`);
       el?.classList.add('handle-attract');
     }
-  }, [nodes]);
+  }, [nodes, rf, setLastPointerPosition]);
 
   const handleConnectStart = useCallback((_: unknown, params: OnConnectStartParams) => {
     isConnecting.current = true;
     connectSource.current = params;
-    // Mark all other nodes as potential targets
     for (const node of nodes) {
       if (node.id === params.nodeId) continue;
       const el = document.querySelector(`[data-id="${node.id}"]`);
@@ -91,7 +88,6 @@ const Inner: React.FC = () => {
   const handleConnectEnd = useCallback((_e?: MouseEvent | TouchEvent) => {
     isConnecting.current = false;
     connectSource.current = null;
-    // Clean up all visual states
     document.querySelectorAll('.react-flow__node.handle-attract').forEach(el => el.classList.remove('handle-attract'));
     document.querySelectorAll('.react-flow__node.is-connecting-target').forEach(el => el.classList.remove('is-connecting-target'));
   }, []);
@@ -104,7 +100,7 @@ const Inner: React.FC = () => {
     useWorkspaceStore.getState().addCard(type as CardType, pos);
   }, [rf]);
 
-  const rightPanelWidth = (apiWorkspaceOpen ? 480 : 0);
+  const rightPanelWidth = agentSidebarOpen ? 320 : 0;
 
   return (
     <div style={{ position: 'absolute', inset: 0, display: 'flex' }}>
@@ -135,16 +131,39 @@ const Inner: React.FC = () => {
           minZoom={0.05}
           maxZoom={5}
           proOptions={{ hideAttribution: true }}
-          style={{ background: '#111111', width: '100%', height: '100%' }}
+          style={{ background: isAiWorkspace ? '#0e0e14' : '#111111', width: '100%', height: '100%' }}
         >
-          {showDots && (
-            <Background variant={BackgroundVariant.Dots} gap={20} size={1} color="#2a2a2a"
-              style={{ background: '#111111' }} />
+          {(showDots || isAiWorkspace) && (
+            <Background variant={BackgroundVariant.Dots} gap={20} size={1} color={isAiWorkspace ? '#1e1e28' : '#2a2a2a'}
+              style={{ background: isAiWorkspace ? '#0e0e14' : '#111111' }} />
           )}
           <Controls showInteractive={false} position="bottom-left"
             style={{ marginBottom: 10, marginLeft: 10 }} />
-          {!apiWorkspaceOpen && (
-            <MiniMap position="bottom-right" nodeColor={() => '#2a2a2a'}
+          {!agentSidebarOpen && (
+            <MiniMap position="bottom-right" nodeColor={(node) => {
+              const type = node.data?.cardType;
+              if (type === 'agent') return '#1a2a4a';
+              if (type === 'agent-output') return '#1a1a2a';
+              if (type === 'ai-generated') return '#1a2a3a';
+              if (type === 'prediction') return '#2a1a3a';
+              if (type === 'import-card') return '#1a2a1a';
+              if (type === 'investigation-preview') return '#10202a';
+              if (type === 'report-agent') return '#2a1a1a';
+              if (type === 'agent-answer') return '#1a1a2a';
+              if (type === 'question-card') return '#2a2a1a';
+              if (type === 'data-supplier') return '#1a2a2a';
+              if (type === 'agent-group') return '#1a1a3a';
+              if (type === 'card-maker') return '#2a1a2a';
+              if (type === 'title-card') return '#1e1e2a';
+              if (type === 'http-request' || type === 'webhook') return '#1a2a3a';
+              if (type === 'code-exec') return '#2a2a1a';
+              if (type === 'transform' || type === 'merge') return '#1a2a2a';
+              if (type === 'condition' || type === 'loop') return '#2a1a2a';
+              if (type === 'swarm-agent') return '#1a1a3a';
+              if (type?.startsWith('osint-')) return '#1a2a1a';
+              if (type === 'trigger') return '#2a2a1e';
+              return '#2a2a2a';
+            }}
               maskColor="rgba(0,0,0,0.7)"
               style={{ width: 140, height: 100, marginBottom: 10, marginRight: 10,
                 background: '#161616', border: '1px solid #222', borderRadius: 6 }} />
@@ -152,9 +171,9 @@ const Inner: React.FC = () => {
         </ReactFlow>
       </div>
 
-      {apiWorkspaceOpen && (
-        <div style={{ display: 'flex', width: rightPanelWidth, transition: 'width 0.2s', overflow: 'hidden', flexShrink: 0 }}>
-          {apiWorkspaceOpen && <ApiWorkspace />}
+      {agentSidebarOpen && (
+        <div style={{ display: 'flex', width: 320, transition: 'width 0.2s', overflow: 'hidden', flexShrink: 0 }}>
+          <AgentSidebar />
         </div>
       )}
     </div>

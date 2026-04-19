@@ -71,36 +71,35 @@ export interface MindmapNode {
 }
 
 export function uploadJsonFile(): Promise<ImportedFile | null> {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = '.json,application/json';
     input.onchange = async () => {
       const f = input.files?.[0];
       if (!f) return resolve(null);
-      let parsed: any;
       try {
-        parsed = JSON.parse(await f.text());
+        const parsed = JSON.parse(await f.text()) as unknown;
+
+        // Detect mindmap export
+        if (parsed && typeof parsed === 'object' && (parsed as MindmapImport).answer !== undefined && (parsed as MindmapImport).mindmap?.root) {
+          return resolve({ type: 'mindmap', data: parsed as MindmapImport });
+        }
+
+        // Detect workspace export (has investigations array or nodes array)
+        if (
+          parsed &&
+          typeof parsed === 'object' &&
+          (Array.isArray((parsed as WorkspaceState).investigations) || Array.isArray((parsed as WorkspaceState).nodes))
+        ) {
+          return resolve({ type: 'workspace', data: parsed as WorkspaceState });
+        }
+
+        // Fallback — raw JSON for inspection
+        return resolve({ type: 'raw', data: parsed, filename: f.name });
       } catch {
-        throw new Error(`"${f.name}" is not valid JSON — please check the file.`);
+        reject(new Error(`"${f.name}" is not valid JSON — please check the file.`));
       }
-
-      // Detect mindmap export
-      if (parsed && typeof parsed === 'object' && parsed.answer !== undefined && parsed.mindmap?.root) {
-        return resolve({ type: 'mindmap', data: parsed as MindmapImport });
-      }
-
-      // Detect workspace export (has investigations array or nodes array)
-      if (
-        parsed &&
-        typeof parsed === 'object' &&
-        (Array.isArray(parsed.investigations) || Array.isArray(parsed.nodes))
-      ) {
-        return resolve({ type: 'workspace', data: parsed as WorkspaceState });
-      }
-
-      // Fallback — raw JSON for inspection
-      return resolve({ type: 'raw', data: parsed, filename: f.name });
     };
     input.click();
   });
