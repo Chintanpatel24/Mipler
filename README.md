@@ -3,24 +3,6 @@
 > A swarm-based investigation wall plus a persistent personal AI assistant.  
 > Local-first storage, encrypted provider keys, model-provider switching, and scheduled automation.
 
----
-
-## What's New in v3
-
-| Change | Details |
-|--------|---------|
-| **Multi-provider LLM routing** | Switch between Ollama, OpenAI, Anthropic, or OpenRouter from Assistant Settings. |
-| **Persistent assistant memory** | Conversations, user profile facts, reusable skills, schedules, and reports are stored in local SQLite. |
-| **Self-improving skills** | Complex tasks can automatically generate reusable skills for future prompts. |
-| **Case-based questioning** | The assistant can analyze case studies, understand the scenario, and ask high-value clarifying questions. |
-| **Automated scheduling** | Create daily tasks (for example a daily report) with local execution and report history. |
-| **Gateway-ready endpoints** | Telegram/Discord message endpoints are available for cloud bot integration. |
-| **File Analysis Panel** | Upload any file type (JSON, CSV, TXT, PDF, images, etc.), ask a natural-language question, and get an AI answer **plus a downloadable mindmap JSON**. |
-| **Mindmap export** | After each file analysis, the AI generates a structured mindmap. Click **↓ JSON** to download it for external use or import into other tools. |
-| **Two separate workspaces** | "Workspace A" and "Workspace B" are completely independent canvases. Importing a JSON into one workspace does **not** affect the other. |
-| **Clear only active workspace** | "Clear Workspace" now only clears whichever workspace is currently active — the other is untouched. |
-| **`mipler` launcher** | Cross-platform launcher: type `mipler` after installation and it starts the frontend plus the Python investigation backend when available. |
-| **Security** | Server is hardcoded to bind `127.0.0.1` — it cannot be reached from other machines on your network. |
 
 ---
 
@@ -279,7 +261,3 @@ mipler-main/
 - Run `PORT=8080 bash start.sh`
 
 ---
-
-## License
-
-MIT — see `LICENSE`
