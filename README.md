@@ -23,6 +23,7 @@ Cloud providers are optional. Local Ollama still works without external APIs.
 
 ```bash
 # 1. Clone or unzip Mipler
+git clone https://github.com/Chintanpatel24/mipler.git
 cd mipler-main
 
 # 2. Install once
@@ -43,20 +44,13 @@ Then open your browser at **http://localhost:3000**
 
 ---
 
-## What The Launcher Does
+<div align="center">
 
-The `mipler` launcher handles everything automatically:
+<img src="image/agent.png">
+<img src="image/t2.png">
+<img src="image/test.png">
 
-1. **Checks Node.js version** — exits with a clear message if below v18.
-2. **Installs dependencies** — runs `npm install` only if `node_modules` is missing.
-3. **Builds the app** — runs `npm run build` when a rebuild is needed and build tooling is available.
-4. **Starts the Python backend** — launches `backend.api.server` automatically when Python + FastAPI are installed.
-5. **Starts the frontend server** — binds to `127.0.0.1:3000` (localhost only).
-
-To use a different port:
-```bash
-PORT=8080 mipler
-```
+</div>
 
 ---
 
