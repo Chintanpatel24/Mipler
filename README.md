@@ -2,17 +2,16 @@
 <img src="image/mipler.png">
 </div>
 
-# Mipler — Swarm Investigation + Personal Assistant
+# Mipler - Swarm Investigation + Personal Assistant
 
 > A swarm-based investigation wall plus a persistent personal AI assistant.  
 > Local-first storage, encrypted provider keys, model-provider switching, and scheduled automation.
-
 
 ---
 
 ## Requirements
 
-- **Node.js** v18 or higher — [nodejs.org](https://nodejs.org)
+- **Node.js** v18 or higher - [nodejs.org](https://nodejs.org)
 - **Ollama** for local-only use, or API keys for OpenAI / Anthropic / OpenRouter.
 
 Cloud providers are optional. Local Ollama still works without external APIs.
@@ -84,38 +83,38 @@ Mipler starts with two workspaces: **Workspace A** and **Workspace B**. They are
 
 Click **AI** in the toolbar to open the File Analysis Panel.
 
-1. **Upload files** — drag-and-drop or click to browse. All file types accepted:
-   - JSON, CSV, TXT, MD, LOG, XML, YAML — read as text
-   - PDF, images — metadata used; content summarized
-   - Any other file — best-effort text read
-2. **Ask a question** — type what you want to know from the files.
-3. **Analyze** — Mipler sends the files and question to your local Ollama model.
+1. **Upload files** - drag-and-drop or click to browse. All file types accepted:
+   - JSON, CSV, TXT, MD, LOG, XML, YAML - read as text
+   - PDF, images - metadata used; content summarized
+   - Any other file - best-effort text read
+2. **Ask a question** - type what you want to know from the files.
+3. **Analyze** - Mipler sends the files and question to your local Ollama model.
 4. **Get results:**
-   - **Answer** — AI's written response to your question.
-   - **Mindmap** — Interactive collapsible mindmap tree based on the analysis.
-   - **↓ JSON** — Download the full mindmap + answer as a structured JSON file.
+   - **Answer** - AI's written response to your question.
+   - **Mindmap** - Interactive collapsible mindmap tree based on the analysis.
+   - **↓ JSON** - Download the full mindmap + answer as a structured JSON file.
 
 ### API Workspace (Ollama Chat)
 
 Click **API** in the toolbar to open the Ollama chat workspace. This is a direct, conversation-style interface to your local Ollama model — useful for freeform OSINT queries, brainstorming, or research.
 
-- **Chat tab** — send messages and get responses from Ollama.
-- **Settings tab** — configure the Ollama URL and select from available models (auto-detected).
+- **Chat tab** - send messages and get responses from Ollama.
+- **Settings tab** - configure the Ollama URL and select from available models (auto-detected).
 
 ### Assistant Settings
 
 Click the **⋮ menu → Assistant Settings** to configure:
 
-- **Provider** — `ollama`, `openai`, `anthropic`, or `openrouter`
-- **Base URL** — optional override per provider
-- **Model** — any model ID supported by the provider
-- **API key** — encrypted in backend local storage
+- **Provider** - `ollama`, `openai`, `anthropic`, or `openrouter`
+- **Base URL** - optional override per provider
+- **Model** - any model ID supported by the provider
+- **API key** - encrypted in backend local storage
 
 ### Export & Import
 
-- **Export** — saves the current workspace state as a `.json` file (all investigations, nodes, edges, AI history).
-- **Import** — loads a workspace JSON. It loads into the **current active workspace** only — it does not overwrite other workspaces.
-- **AI Mindmap export** — separate JSON download from the File Analysis Panel.
+- **Export** - saves the current workspace state as a `.json` file (all investigations, nodes, edges, AI history).
+- **Import** - loads a workspace JSON. It loads into the **current active workspace** only — it does not overwrite other workspaces.
+- **AI Mindmap export** - separate JSON download from the File Analysis Panel.
 
 ---
 
