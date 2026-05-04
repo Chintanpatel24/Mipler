@@ -1,7 +1,10 @@
 <div align="center">
 
-<img width="300" alt="mipler" src="https://github.com/user-attachments/assets/3d2c54f7-813f-46ed-800b-b47e05c32cfb" />
+<img width="300" alt="mipler" src="image/mipler.png" />
 
+![Mipler](https://img.shields.io/badge/version-1.0.0-amber?style=flat-square)
+![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-blue?style=flat-square)
 </div>
 
 # Mipler - Swarm Investigation + Personal Assistant
