@@ -9,8 +9,8 @@
 
 # Mipler - Swarm Investigation support with canvas note taking 
 
-> A swarm-based investigation wall plus a persistent personal AI assistant.  
-> Local-first storage, encrypted provider keys, model-provider switching, and scheduled automation.
+>- A swarm-based investigation wall plus a persistent personal AI assistant.  
+>- Local-first storage, encrypted provider keys, model-provider switching, and scheduled automation.
 
 ---
 
